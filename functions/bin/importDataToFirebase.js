@@ -16,17 +16,35 @@ const importData = require("../data/mockData.json");
       const currentCollection = importData[collection];
       Object.keys(currentCollection).forEach((document) => {
         const currentDocument = currentCollection[document];
-        if (currentDocument.lastEvaluationDate) {
-          if (currentDocument.lastEvaluationDate === "NEW") {
-            currentDocument.lastEvaluationDate = admin.firestore.Timestamp.fromDate(
+        if (currentDocument.lastEvaluatedOn) {
+          if (currentDocument.lastEvaluatedOn === "NEVER") {
+            currentDocument.lastEvaluatedOn = admin.firestore.Timestamp.fromDate(
               new Date("01.01.1970")
             );
-          } else {
-            currentDocument.lastEvaluationDate = admin.firestore.Timestamp.fromDate(
+          } else if(currentDocument.lastEvaluatedOn === "YESTERDAY") {
+              let date = new Date();
+              date.setDate(date.getDate() -1 )
+            currentDocument.lastEvaluatedOn = admin.firestore.Timestamp.fromDate(
+               date
+              );
+          } 
+          else {
+            currentDocument.lastEvaluatedOn = admin.firestore.Timestamp.fromDate(
               new Date()
             );
           }
         }
+        if (currentDocument.lastModifiedOn) {
+            if (currentDocument.lastModifiedOn === "NEVER") {
+              currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(
+                new Date("01.01.1970")
+              );
+            } else {
+              currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(
+                new Date()
+              );
+            }
+          }
         dbPromises.push(
           db
             .collection(collection)
