@@ -23,10 +23,12 @@
     "990b5be9-9d7d-424f-8e94-3a907b9d3449": {
       "approved": false,
       "lastEvaluationDate": "NEW",
-      "courses": {
-        "courseHomeUniversity": "651992c6-1a5e-4067-a121-b8022ff44fec",
-        "courseTargetUniversity": "766a9702-e45d-4904-acf5-eac23487bb45"
-      },
+      "courses": [
+        {
+          "courseHomeUniversity": "651992c6-1a5e-4067-a121-b8022ff44fec",
+          "courseTargetUniversity": "766a9702-e45d-4904-acf5-eac23487bb45"
+        }
+      ],
       "responsible": "b01f19fd-2d8d-467a-8e20-b9b0c9cc8cd3",
       "score": 95,
       "student": "3f7313f4-58f8-436a-8105-9723607e8f4f",
