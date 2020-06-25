@@ -5,7 +5,8 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:prettier": "prettier \"**/*.{js,json,md,yml,yaml,html}\" --write --loglevel error",
     "lint:eslint": "eslint . --fix",
-    "serve": "firebase emulators:start --only functions",
+    "serve:functions": "cross-env NODE_ENV=functions firebase emulators:start --only functions",
+    "serve:all": "cross-env NODE_ENV=firestore firebase emulators:start",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
@@ -13,13 +14,14 @@
     "dataImport": "node bin/importDataToFirebase.js"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-promise": "^4.0.1",
