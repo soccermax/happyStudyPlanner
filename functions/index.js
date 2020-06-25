@@ -17,17 +17,7 @@ admin.initializeApp({
 
 app.use(cors({ origin: true }));
 
-app.get("/example", (req, res) => {
-  res.send(200);
-});
-
-app.get("/testSendMail", async (req, res) => {
-  await admin.firestore().collection("learningAgreement").add({
-    score: "tset",
-  });
-  res.send("done");
-});
-
+//TODO: remove after testing
 app.get("/testApprovedMail", async (req, res) => {
   await admin.firestore().collection("learningAgreement").doc("990b5be9-9d7d-424f-8e94-3a907b9d3449").update({
     approved: true,
