@@ -1,5 +1,6 @@
 "use strict"
 
+const admin = require("firebase-admin");
 const { readFile } = require("fs");
 const { promisify } = require("util");
 const path = require("path");
@@ -28,7 +29,7 @@ const readTemplate = async (name) => {
 }
 
 const sendLearningAgreementApproved = async (receiver, parameterMap) => {
-    const body = normalVariableReplacer(await readTemplate(templates.learningAgreementApprovedDe), parameterMap);
+    const body = normalVariableReplacer((await readTemplate(templates.learningAgreementApprovedDe)).toString(), parameterMap);
     if (body !== null) {
         return _queueEmail({
             to: receiver,
@@ -45,7 +46,7 @@ const _queueEmail = async (emailPayload) => {
             .firestore()
             .collection("mail")
             .add({
-                to: [emailPayload.reiver],
+                to: [emailPayload.to],
                 message: {
                     subject: emailPayload.subject,
                     html: emailPayload.html,

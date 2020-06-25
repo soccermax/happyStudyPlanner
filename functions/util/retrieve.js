@@ -37,7 +37,6 @@ const setLearningAgreementStatus = async (id, status) => {
 const _getDocumentById = async (collection, id) => {
     const db = firestore();
     try {
-        console.log(id);
         const course = await db.collection(collection).doc(id).get();
         if (!course.exists) {
             return null;

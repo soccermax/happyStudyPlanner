@@ -10,8 +10,7 @@ const onCreateHandler = functions.firestore
     .document("learningAgreement/{learningAgreementId}")
     .onCreate(async (snapshot, context) => {
         // Notification Alexa Skill
-        const itemDataSnap = await snapshot.ref.get();
-        console.log(itemDataSnap.data());
+        // const itemDataSnap = await snapshot.ref.get();
     });
 
     const onUpdateHandler = functions.firestore
@@ -19,8 +18,6 @@ const onCreateHandler = functions.firestore
     .onUpdate(async (snapshot, context) => {
         const beforeUpdate = snapshot.before.data();
         const afterUpdate = snapshot.after.data();
-        console.log(beforeUpdate.approved);
-        console.log(afterUpdate.approved);
         if ( Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === true) {
             return _sendLearningAgreementApprovedEmail(await getLearningAgreementById(snapshot.after.id));
         }
@@ -28,7 +25,6 @@ const onCreateHandler = functions.firestore
 
 
 const _sendLearningAgreementApprovedEmail = async(learningAgreement) => {
-    console.log(learningAgreement);
     const student = await getUserById(learningAgreement.student);
     return sendLearningAgreementApproved(student.email, {
         name: student.preName

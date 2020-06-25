@@ -29,7 +29,7 @@ app.get("/testSendMail", async (req, res) => {
 });
 
 app.get("/testApprovedMail", async (req, res) => {
-  await admin.firestore().collection("learningAgreement").doc("990b5be9-9d7d-424f-8e94-3a907b9d3449").set({
+  await admin.firestore().collection("learningAgreement").doc("990b5be9-9d7d-424f-8e94-3a907b9d3449").update({
     approved: true
   });
   res.send("done");
