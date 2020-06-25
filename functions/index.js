@@ -6,6 +6,8 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const serviceAccount = require("./credentials-firebase.json");
+const { isLocalFireStore } = require("./util/helper");
+const { importData } = require("./util/dataImport");
 
 const learningAgreementHandler = require("./handler/learningAgreement");
 
@@ -26,8 +28,22 @@ app.get("/testSendMail", async (req, res) => {
   res.send("done");
 });
 
+app.get("/testApprovedMail", async (req, res) => {
+  await admin.firestore().collection("learningAgreement").doc("990b5be9-9d7d-424f-8e94-3a907b9d3449").set({
+    approved: true
+  });
+  res.send("done");
+});
+
+if (isLocalFireStore) {
+  importData().catch(() => {
+    process.exit(-1);
+  })
+}
+
 // REST Handler
 exports.api = functions.https.onRequest(app);
 
 // Database Handler
-exports.onLearningAgreementCreated = learningAgreementHandler
+exports.onLearningAgreementCreated = learningAgreementHandler.onCreateHandler
+exports.onLearningAgreementUpdated = learningAgreementHandler.onUpdateHandler
