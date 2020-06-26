@@ -56,5 +56,5 @@ module.exports = {
   getUniversityById,
   getUserById,
   getLearningAgreementById,
-  setLearningAgreementStatus
+  setLearningAgreementStatus,
 };
