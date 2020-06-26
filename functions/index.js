@@ -11,6 +11,8 @@ const { importData } = require("./util/dataImport");
 
 const learningAgreementHandler = require("./handler/learningAgreement");
 
+const functionRegion = "europe-west3";
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
@@ -32,7 +34,7 @@ if (isLocalFireStore) {
 }
 
 // REST Handler
-exports.api = functions.https.onRequest(app);
+exports.api = functions.region(functionRegion).https.onRequest(app);
 
 // Database Handler
 exports.onLearningAgreementCreated = learningAgreementHandler.onCreateHandler;

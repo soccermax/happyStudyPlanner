@@ -5,15 +5,19 @@ const { getUserById, getLearningAgreementById } = require("../util/retrieve");
 const { sendLearningAgreementApproved } = require("../mail-service");
 const { triggerNotification } = require("../alexa-skill");
 
-const onCreateHandler = functions.firestore
-  .document("learningAgreement/{learningAgreementId}")
+const functionRegion = "europe-west3";
+
+const onCreateHandler = functions
+  .region(functionRegion)
+  .firestore.document("learningAgreement/{learningAgreementId}")
   .onCreate(async (snapshot, context) => {
     const learningAgreement = (await snapshot.ref.get()).data();
     return triggerNotification(learningAgreement.student);
   });
 
-const onUpdateHandler = functions.firestore
-  .document("learningAgreement/{learningAgreementId}")
+const onUpdateHandler = functions
+  .region(functionRegion)
+  .firestore.document("learningAgreement/{learningAgreementId}")
   .onUpdate(async (snapshot) => {
     const afterUpdate = snapshot.after.data();
     if (Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === true) {
