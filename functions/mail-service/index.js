@@ -1,6 +1,6 @@
 "use strict";
 
-const admin = require("firebase-admin");
+const { firestore } = require("firebase-admin");
 const { readFile } = require("fs");
 const { promisify } = require("util");
 const path = require("path");
@@ -10,7 +10,7 @@ const readFileAsync = promisify(readFile);
 const basicTemplatePath = path.resolve(__dirname, "template");
 
 const templates = {
-  learningAgreementApprovedDe: "learningAgreementApproved_de.xhtml",
+  learningAgreementApprovedDe: "learningAgreementApproved_de.html",
 };
 
 const normalVariableReplacer = (text, replacerMap) =>
@@ -28,24 +28,27 @@ const readTemplate = async (name) => {
   }
 };
 
-const sendLearningAgreementApproved = async (receiver, parameterMap) => {
+const sendLearningAgreementApproved = async (receiver, parameterMap, metadata) => {
   const body = normalVariableReplacer(
     (await readTemplate(templates.learningAgreementApprovedDe)).toString(),
     parameterMap
   );
   return body !== null
-    ? _queueEmail({
-        to: receiver,
-        subject: "Dein Learning Agreement wurde genehmigt",
-        html: body,
-      })
+    ? _queueEmail(
+        {
+          to: receiver,
+          subject: "Dein Learning Agreement wurde genehmigt",
+          html: body,
+        },
+        metadata
+      )
     : Promise.resolve();
 };
 
-const _queueEmail = async (emailPayload) => {
+const _queueEmail = async (emailPayload, metadata) => {
+  metadata.createdOn = firestore.FieldValue.serverTimestamp();
   try {
-    await admin
-      .firestore()
+    await firestore()
       .collection("mail")
       .add({
         to: [emailPayload.to],
@@ -53,6 +56,7 @@ const _queueEmail = async (emailPayload) => {
           subject: emailPayload.subject,
           html: emailPayload.html,
         },
+        ...metadata,
       });
     console.log("Email queued");
   } catch (err) {
