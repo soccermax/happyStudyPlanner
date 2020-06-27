@@ -13,7 +13,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-
 if (isLocalFireStore) {
   importData().catch(() => {
     process.exit(-1);

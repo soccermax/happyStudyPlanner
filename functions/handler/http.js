@@ -8,7 +8,6 @@ const api = express();
 
 const functionRegion = "europe-west3";
 
-
 api.use(cors({ origin: true }));
 
 //TODO: remove after testing
@@ -19,15 +18,14 @@ api.get("/testApprovedMail", async (req, res) => {
   res.send("done");
 });
 
-api.get("/userData/:userId", async(req, res) => {
-    const { userId } = req.params;
-    if (!isUuid(userId)) {
-      res.status(400).send("The provided UserId is not a valid user ID");
-    }
-    return res.send(await getAllLearningAgreementsForUserDeep(userId));
+api.get("/userData/:userId", async (req, res) => {
+  const { userId } = req.params;
+  if (!isUuid(userId)) {
+    res.status(400).send("The provided UserId is not a valid user ID");
+  }
+  return res.send(await getAllLearningAgreementsForUserDeep(userId));
 });
 
-
 module.exports = {
-    api: functions.region(functionRegion).https.onRequest(api)
-}
+  api: functions.region(functionRegion).https.onRequest(api),
+};
