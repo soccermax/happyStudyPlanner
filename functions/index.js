@@ -3,7 +3,7 @@
 const admin = require("firebase-admin");
 
 const serviceAccount = require("./credentials-firebase.json");
-const { isLocalFireStore } = require("./util/helper");
+const { isLocalFireStore, setImportRunningState } = require("./util/helper");
 const { importData } = require("./util/dataImport");
 
 const learningAgreementHandler = require("./handler/learningAgreement");
@@ -14,9 +14,16 @@ admin.initializeApp({
 });
 
 if (isLocalFireStore) {
-  importData().catch(() => {
-    process.exit(-1);
-  });
+  setImportRunningState(true);
+  importData()
+    .then(() => {
+      return setTimeout(() => {
+        setImportRunningState(false)
+      }, 5000)
+    })
+    .catch(() => {
+      process.exit(-1);
+    });
 }
 
 // REST Handler
