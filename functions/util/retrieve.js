@@ -25,6 +25,34 @@ const getLearningAgreementById = async (id) => {
   return _getDocumentById(collections.LEARNING_AGREEMENT, id);
 };
 
+const getAllLearningAgreementsForUserDeep = async (userID) => {
+  const db = firestore();
+  return Promise.all(
+    (await db.collection(collections.LEARNING_AGREEMENT).where("student", "==", userID).get()).docs.map(
+      async (document) => {
+        const learningAgreement = document.data();
+
+        delete learningAgreement.student;
+        for (const course of learningAgreement.courses) {
+          const [courseHomeUniversity, courseTargetUniversity] = await Promise.all([
+            getCourseById(course.courseHomeUniversity),
+            getCourseById(course.courseTargetUniversity),
+          ]);
+          course.courseHomeUniversity = courseHomeUniversity;
+          course.courseTargetUniversity = courseTargetUniversity;
+        }
+        const [targetUniversity, responsible] = await Promise.all([
+          getUniversityById(learningAgreement.targetUniversity),
+          getUserById(learningAgreement.responsible),
+        ]);
+        learningAgreement.targetUniversity = targetUniversity.name;
+        learningAgreement.responsible = `${responsible.preName} ${responsible.name}`;
+        return learningAgreement;
+      }
+    )
+  );
+};
+
 const setLearningAgreementStatus = async (id, status) => {
   const db = firestore();
   try {
@@ -40,11 +68,11 @@ const setLearningAgreementStatus = async (id, status) => {
 const _getDocumentById = async (collection, id) => {
   const db = firestore();
   try {
-    const course = await db.collection(collection).doc(id).get();
-    if (!course.exists) {
+    const document = await db.collection(collection).doc(id).get();
+    if (!document.exists) {
       return null;
     }
-    return course.data();
+    return document.data();
   } catch (err) {
     console.error(err);
     return null;
@@ -57,4 +85,5 @@ module.exports = {
   getUserById,
   getLearningAgreementById,
   setLearningAgreementStatus,
+  getAllLearningAgreementsForUserDeep,
 };
