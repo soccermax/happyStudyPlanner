@@ -18,8 +18,8 @@ if (isLocalFireStore) {
   importData()
     .then(() => {
       return setTimeout(() => {
-        setImportRunningState(false)
-      }, 5000)
+        setImportRunningState(false);
+      }, 5000);
     })
     .catch(() => {
       process.exit(-1);
