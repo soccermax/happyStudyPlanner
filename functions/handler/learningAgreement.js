@@ -4,6 +4,7 @@ const functions = require("firebase-functions");
 const { getUserById, getLearningAgreementById } = require("../util/retrieve");
 const { sendLearningAgreementApproved } = require("../mail-service");
 const { triggerNotification } = require("../alexa-skill");
+const { getImportRunningState } = require("../util/helper");
 
 const functionRegion = "europe-west3";
 
@@ -12,9 +13,7 @@ const onCreateHandler = functions
   .firestore.document("learningAgreement/{learningAgreementId}")
   .onCreate(async (snapshot, context) => {
     const learningAgreement = (await snapshot.ref.get()).data();
-    // TODO: activate again in productive
-    // return triggerNotification(learningAgreement.student);
-    return Promise.resolve();
+    return getImportRunningState() ? Promise.resolve() : triggerNotification(learningAgreement.student);
   });
 
 const onUpdateHandler = functions
@@ -23,22 +22,23 @@ const onUpdateHandler = functions
   .onUpdate(async (snapshot) => {
     const afterUpdate = snapshot.after.data();
     if (Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === true) {
-      return _sendLearningAgreementApprovedEmail(snapshot.after.id, await getLearningAgreementById(snapshot.after.id));
+      return getImportRunningState()
+        ? Promise.resolve()
+        : _sendLearningAgreementApprovedEmail(snapshot.after.id, await getLearningAgreementById(snapshot.after.id));
     } else {
       return Promise.resolve();
     }
   });
 
 const _sendLearningAgreementApprovedEmail = async (id, learningAgreement) => {
-  // TODO: activate again
-  // const student = await getUserById(learningAgreement.student);
-  // return sendLearningAgreementApproved(
-  //   student.email,
-  //   {
-  //     name: student.preName,
-  //   },
-  //   { learningAgreementID: id }
-  // );
+  const student = await getUserById(learningAgreement.student);
+  return sendLearningAgreementApproved(
+    student.email,
+    {
+      name: student.preName,
+    },
+    { learningAgreementID: id }
+  );
 };
 
 module.exports = {

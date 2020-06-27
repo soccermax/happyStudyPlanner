@@ -11,7 +11,7 @@ const importData = async () => {
         const currentDocument = currentCollection[document];
         if (currentDocument.lastEvaluatedOn) {
           if (currentDocument.lastEvaluatedOn === "NEVER") {
-            currentDocument.lastEvaluatedOn = admin.firestore.Timestamp.fromDate(new Date("01.01.1970"));
+            currentDocument.lastEvaluatedOn = null;
           } else if (currentDocument.lastEvaluatedOn === "YESTERDAY") {
             let date = new Date();
             date.setDate(date.getDate() - 1);
@@ -22,7 +22,7 @@ const importData = async () => {
         }
         if (currentDocument.lastModifiedOn) {
           if (currentDocument.lastModifiedOn === "NEVER") {
-            currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(new Date("01.01.1970"));
+            currentDocument.lastModifiedOn = null;
           } else {
             currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(new Date());
           }
