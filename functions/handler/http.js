@@ -10,14 +10,6 @@ const functionRegion = "europe-west3";
 
 api.use(cors({ origin: true }));
 
-//TODO: remove after testing
-api.get("/testApprovedMail", async (req, res) => {
-  await admin.firestore().collection("learningAgreement").doc("990b5be9-9d7d-424f-8e94-3a907b9d3449").update({
-    approved: true,
-  });
-  res.send("done");
-});
-
 api.get("/userData/:userId", async (req, res) => {
   const { userId } = req.params;
   if (!isUuid(userId)) {
