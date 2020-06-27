@@ -12,7 +12,9 @@ const onCreateHandler = functions
   .firestore.document("learningAgreement/{learningAgreementId}")
   .onCreate(async (snapshot, context) => {
     const learningAgreement = (await snapshot.ref.get()).data();
-    return triggerNotification(learningAgreement.student);
+    // TODO: activate again in productive
+    // return triggerNotification(learningAgreement.student);
+    return Promise.resolve();
   });
 
 const onUpdateHandler = functions
