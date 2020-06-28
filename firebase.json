@@ -12,7 +12,8 @@
     ]
   },
   "hosting": {
-    "public": "public",
+    "target": "happyStudyPlanner",
+    "public": "dist/happyStudyPlanner",
     "ignore": [
       "firebase.json",
       "**/.*",

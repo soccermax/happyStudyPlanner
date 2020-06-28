@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "happystudyplanner"
+  },
+  "targets": {
+    "happystudyplanner": {
+      "hosting": {
+        "happyStudyPlanner": [
+          "happyStudyPlanner"
+        ]
+      }
+    }
   }
 }
