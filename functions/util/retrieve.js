@@ -21,8 +21,28 @@ const getUniversityById = async (id) => {
   return _getDocumentById(collections.UNIVERSITY, id);
 };
 
-const getLearningAgreementById = async (id) => {
-  return _getDocumentById(collections.LEARNING_AGREEMENT, id);
+const getLearningAgreementById = async (id, deep = false) => {
+  const learningAgreement = await _getDocumentById(collections.LEARNING_AGREEMENT, id);
+  if (!deep) {
+    return learningAgreement;
+  }
+  for (const course of learningAgreement.courses) {
+    const [courseHomeUniversity, courseTargetUniversity] = await Promise.all([
+      getCourseById(course.courseHomeUniversity),
+      getCourseById(course.courseTargetUniversity),
+    ]);
+    course.courseHomeUniversity = courseHomeUniversity;
+    course.courseTargetUniversity = courseTargetUniversity;
+  }
+  const [targetUniversity, responsible, student] = await Promise.all([
+    getUniversityById(learningAgreement.targetUniversity),
+    getUserById(learningAgreement.responsible),
+    getUserById(learningAgreement.student)
+  ]);
+  learningAgreement.targetUniversity = targetUniversity;
+  learningAgreement.responsible = responsible;
+  learningAgreement.student = student;
+  return learningAgreement;
 };
 
 const getAllLearningAgreementsForUserDeep = async (userID) => {
