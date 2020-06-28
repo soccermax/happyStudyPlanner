@@ -45,7 +45,7 @@
       "score": 95,
       "student": "3f7313f4-58f8-436a-8105-9723607e8f4f",
       "targetUniversity": "0e165c8d-e5c6-45dd-9f96-02d10933eabe",
-      "lastModifiedOn": "NEVER"
+      "lastModifiedOn": "TODAY"
     },
     "89cdd865-8d39-4c8d-ac00-a11c2dee20c2": {
       "approved": false,
@@ -60,7 +60,7 @@
       "score": 97,
       "student": "6531d866-1bba-4902-93a7-cbcdab697b01",
       "targetUniversity": "0e165c8d-e5c6-45dd-9f96-02d10933eabe",
-      "lastModifiedOn": "NOW"
+      "lastModifiedOn": "TODAY"
     }
   },
   "university": {
