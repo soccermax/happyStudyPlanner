@@ -37,7 +37,7 @@ const getLearningAgreementById = async (id, deep = false) => {
   const [targetUniversity, responsible, student] = await Promise.all([
     getUniversityById(learningAgreement.targetUniversity),
     getUserById(learningAgreement.responsible),
-    getUserById(learningAgreement.student)
+    getUserById(learningAgreement.student),
   ]);
   learningAgreement.targetUniversity = targetUniversity;
   learningAgreement.responsible = responsible;
