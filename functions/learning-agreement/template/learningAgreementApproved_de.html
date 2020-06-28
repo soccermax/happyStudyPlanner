@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+        <title>Learning Agreement genehmigt</title>
+    </head>
+    <body>
+        <h1>Learning Agreement genehmigt</h1>
+        <p>Name: {{student.preName}}</p>
+        <ul>
+            {{#each courses}}
+            <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
+            <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
+            <br>
+        {{/each}}
+        </ul>
+    </body>
+</html>
