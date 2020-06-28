@@ -28,7 +28,7 @@ const generatePDFAndSaveToDisk = async (learningAgreementID, path) => {
   } catch (err) {
     console.error("Creating PDF failed!");
     console.error(err);
-    return null;
+    return Promise.reject(err);
   }
 };
 
@@ -48,7 +48,7 @@ const generatePDFSteam = async (learningAgreementID) => {
   } catch (err) {
     console.error("Creating PDF failed!");
     console.error(err);
-    return null;
+    return Promise.reject(err);
   }
 };
 
@@ -57,7 +57,7 @@ const readTemplate = async (name) => {
     return await readFileAsync(path.resolve(basicTemplatePath, name), "utf8");
   } catch (err) {
     console.error("Couldn't read email template: %s", name);
-    return null;
+    return Promise.reject(err);
   }
 };
 

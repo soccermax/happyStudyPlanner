@@ -24,7 +24,7 @@ const readTemplate = async (name) => {
     return await readFileAsync(path.resolve(basicTemplatePath, name));
   } catch (err) {
     console.error("Couldn't read email template: %s", name);
-    return null;
+    return Promise.reject(err);
   }
 };
 
@@ -48,7 +48,7 @@ const sendLearningAgreementApproved = async (receiver, parameterMap, metadata) =
 const _queueEmail = async (emailPayload, metadata) => {
   metadata.createdOn = firestore.FieldValue.serverTimestamp();
   try {
-    await firestore()
+    return await firestore()
       .collection("mail")
       .add({
         to: [emailPayload.to],
@@ -58,9 +58,9 @@ const _queueEmail = async (emailPayload, metadata) => {
         },
         ...metadata,
       });
-    console.log("Email queued");
   } catch (err) {
     console.error(err);
+    return Promise.reject(err);
   }
 };
 
