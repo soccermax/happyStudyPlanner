@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const cors = require("cors");
 const express = require("express");
 const { getAllLearningAgreementsForUserDeep } = require("../util/retrieve");
-const { generatePDF, generatePDFSteam } = require("../learning-agreement");
+const { generatePDFSteam } = require("../learning-agreement");
 
 const api = express();
 

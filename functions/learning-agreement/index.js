@@ -1,7 +1,7 @@
 "use strict";
 
 const { createFileAndSaveToDisk, createReadStream } = require("../util/pdfCreator");
-const { readFile, createWriteStream } = require("fs");
+const { readFile } = require("fs");
 const { promisify } = require("util");
 const path = require("path");
 
@@ -15,16 +15,21 @@ const templates = {
 };
 
 const generatePDFAndSaveToDisk = async (learningAgreementID, path) => {
-  const learningAgreement = await getLearningAgreementById(learningAgreementID, true);
-  const html = await readTemplate(templates.learningAgreementApprovedDe);
-  const output = await createFileAndSaveToDisk({
-    html,
-    data: {
-      ...learningAgreement,
-    },
-    path,
-  });
-  console.log(output);
+  try {
+    const learningAgreement = await getLearningAgreementById(learningAgreementID, true);
+    const html = await readTemplate(templates.learningAgreementApprovedDe);
+    return await createFileAndSaveToDisk({
+      html,
+      data: {
+        ...learningAgreement,
+      },
+      path,
+    });
+  } catch (err) {
+    console.error("Creating PDF failed!");
+    console.error(err);
+    return null;
+  }
 };
 
 const generatePDFSteam = async (learningAgreementID) => {
@@ -43,6 +48,7 @@ const generatePDFSteam = async (learningAgreementID) => {
   } catch (err) {
     console.error("Creating PDF failed!");
     console.error(err);
+    return null;
   }
 };
 

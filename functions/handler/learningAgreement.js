@@ -11,7 +11,7 @@ const functionRegion = "europe-west3";
 const onCreateHandler = functions
   .region(functionRegion)
   .firestore.document("learningAgreement/{learningAgreementId}")
-  .onCreate(async (snapshot, context) => {
+  .onCreate(async (snapshot) => {
     const learningAgreement = (await snapshot.ref.get()).data();
     return getImportRunningState() ? Promise.resolve() : triggerNotification(learningAgreement.student);
   });
