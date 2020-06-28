@@ -10,7 +10,7 @@ const functionRegion = "europe-west3";
 
 api.use(cors({ origin: true }));
 
-api.get("/learningAgreement/:id/file", async (req,res) => {
+api.get("/learningAgreement/:id/file", async (req, res) => {
   const { id } = req.params;
   console.log(id.length);
   if (!id || id.length === 0) {
@@ -18,7 +18,7 @@ api.get("/learningAgreement/:id/file", async (req,res) => {
   }
   const stream = await generatePDFSteam(id);
   return stream.pipe(res);
-})
+});
 
 api.get("/userData/:userId", async (req, res) => {
   const { userId } = req.params;
