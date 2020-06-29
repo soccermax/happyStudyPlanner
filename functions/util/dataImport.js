@@ -95,7 +95,7 @@ const checkIfKeyShouldBeReplaced = (key) => {
 const deleteCollection = async (collection) => {
   const db = admin.firestore();
   const batch = db.batch();
-  const snapshot = await db.collection(collection).orderBy("__name__").get();
+  const snapshot = await db.collection(collection).get();
   snapshot.docs.forEach((doc) => {
     batch.delete(doc.ref);
   });
