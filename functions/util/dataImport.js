@@ -1,15 +1,17 @@
 const mockData = require("../data/mockData.json");
 const admin = require("firebase-admin");
 const { generateFirestoreDocumentID } = require("./helper");
+const { firestore } = require("firebase-admin");
 let idMap = {};
 
 const importData = async () => {
   const db = admin.firestore();
   const dbPromises = [];
   try {
-    Object.keys(mockData).forEach((collection) => {
+    replaceKeyFieldsInCollectionAndDocuments(newIdMap(), mockData);
+    Object.keys(mockData).forEach(async (collection) => {
+      await deleteCollection(collection);
       const currentCollection = mockData[collection];
-      replaceKeyFieldsInCollectionAndDocuments(newIdMap(), mockData, currentCollection);
       Object.keys(currentCollection).forEach((document) => {
         const currentDocument = currentCollection[document];
         if (currentDocument.lastEvaluatedOn) {
@@ -53,16 +55,18 @@ const newIdMap = () => {
   return idMapFunction;
 };
 
-const replaceKeyFieldsInCollectionAndDocuments = (idMap, mockData, currentCollection) => {
-  Object.keys(currentCollection).forEach((document) => {
-    if (checkIfKeyShouldBeReplaced(document)) {
-      const newID = idMap(document);
-      currentCollection[newID] = currentCollection[document];
-      delete currentCollection[document];
-      replaceDocumentDeep(idMap, currentCollection[newID]);
-    } else {
-      replaceDocumentDeep(idMap, currentCollection[document]);
-    }
+const replaceKeyFieldsInCollectionAndDocuments = (idMap, mockData) => {
+  Object.keys(mockData).forEach((collection) => {
+    Object.keys(mockData[collection]).forEach((document) => {
+      if (checkIfKeyShouldBeReplaced(document)) {
+        const newID = idMap(document);
+        mockData[collection][newID] = mockData[collection][document];
+        delete mockData[collection][document];
+        replaceDocumentDeep(idMap, mockData[collection][newID]);
+      } else {
+        replaceDocumentDeep(idMap, mockData[collection][document]);
+      }
+    });
   });
 };
 
@@ -74,8 +78,8 @@ const replaceDocumentDeep = (idMap, document) => {
     return;
   }
   Object.keys(document).forEach((field) => {
+    // eslint-disable-next-line valid-typeof
     if (typeof document[field] === "object" && typeof document[field] !== null) {
-      // eslint-disable-line valid-typeof
       return replaceDocumentDeep(idMap, document[field]);
     }
     if (checkIfKeyShouldBeReplaced(document[field])) {
@@ -87,6 +91,16 @@ const replaceDocumentDeep = (idMap, document) => {
 const checkIfKeyShouldBeReplaced = (key) => {
   return key !== null && typeof key === "string" && key.startsWith("id_");
 };
+
+const deleteCollection = async (collection) => {
+  const db = admin.firestore();
+  const batch = db.batch();
+  const snapshot = await db.collection(collection).orderBy('__name__').get();
+  snapshot.docs.forEach((doc) => {
+    batch.delete(doc.ref);
+  });
+  await batch.commit();
+}
 
 module.exports = {
   importData,
