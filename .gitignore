@@ -66,3 +66,4 @@ node_modules/
 .env
 functions/tsconfig.json
 .DS_Store
+.vscode/*
