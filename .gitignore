@@ -67,3 +67,5 @@ node_modules/
 functions/tsconfig.json
 .DS_Store
 .vscode/*
+src/environments/environment.prod.ts
+src/environments/environment.ts
