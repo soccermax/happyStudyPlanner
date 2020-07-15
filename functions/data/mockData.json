@@ -73,6 +73,16 @@
       "name": "University of Queensland",
       "language": "English",
       "country": "Australien"
+    },
+     "id_uniLake": {
+      "name": "Lakehead University",
+      "language": "English",
+      "country": "Canada"
+    },
+      "id_uniPHKa": {
+      "name": "Pädagogische Hochschule Karlsruhe",
+      "language": "Deutsch",
+      "country": "Deutschland"
     }
   },
   "course": {
@@ -93,6 +103,123 @@
       "language": "Englisch",
       "description": "Vermitteln von grundlegende Kenntnisse über Software Entwicklung",
       "tags": ["Informatik", "Software Entwicklung", "Technisch", "Informatik"]
+    },
+    "id_courseITS": {
+      "name": "IT-Sicherheit",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "Vermitteln von praktischen und sicherheitsorientierten Umgang mit IT-Systemen",
+      "tags": ["Informatik", "Sicherheit", "Betriebssysteme"]
+    },
+"id_courseFW": {
+      "name": "Finanzwirtschaft",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über das Gebiet der Finanzierung",
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+    },
+  "id_courseMark": {
+      "name": "Marketing",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über wesentliche Gebiete des Marketings",
+      "tags": ["Marketing", "Wirtschaft", "Unternehmenspolitik"]
+    },
+ "id_courseProdorg": {
+      "name": "Produktionsorganisation",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über wesentliche betrieblichen und überbetrieblichen Koordinationsprozesse",
+      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+    },
+"id_courseOpMa": {
+      "name": "Operations Management 2",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Emphasizes the management of manufacturing activities",
+      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+    },
+    "id_courseBI": {
+      "name": "Business Intelligence",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Exploration of concepts, tools and techniques surrounding the use of data for supporting managerial decisions, and developing insight relevant to achieving the goals of an organization.",
+      "tags": ["Entscheidungen", "Wirtschaft", "Management", "Datenanalyse"]
+    },
+    "id_courseFI": {
+      "name": "Finance 2",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Extends the field of corporate finance to include financial planning and analysis",
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+    },
+ "id_courseEt": {
+      "name": "Grundlagen der Ethik",
+      "creditPoints": 5,
+      "university": "id_uniPHKa",
+      "major": "Lehramt",
+      "language": "Deutsch",
+      "description": "Sie können den philosophischen Charakter der Frage nach Moral erläutern, auch in Differenzierung zu vorrangig nichtphilosophischen Auseinandersetzungen;",
+      "tags": ["Lehramt", "Ethik", "Philosophie"]
+    },
+ "id_courseTheo": {
+      "name": "Theologisches Basiswissen",
+      "creditPoints": 5,
+      "university": "id_uniPHKa",
+      "major": "Lehramt",
+      "language": "Deutsch",
+      "description": "Sie können verschiedene Erkenntnis- und Arbeitsmethoden der biblischen, historischen, systematischen und praktischen Theologie in ihren spezifischen Möglichkeiten einschätzen und anwenden;",
+      "tags": ["Lehramt", "Theologie", "Glaube"]
+    },
+ "id_courseModell": {
+      "name": "Modelling Techniques for Information Systems",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "The unit aims to develop an appreciation, and an ability to manage, the complexity of contemporary and future information systems and the domains in which they are used.",
+      "tags": ["Wissenschaft", "Technik", "Informatik"]
+    },
+    "id_courseMa": {
+      "name": "Marketing",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Marketing introduces students to key marketing strategies and tactics in order to adapt and respond to a continuously changing marketplace.",
+      "tags": ["Wirtschaft", "Marketing", "Kundenverständnis"]
+    },
+    "id_courseWebC": {
+      "name": "Web Computing",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "This unit is a technical introduction to modern web computing.",
+      "tags": ["Informatik", "Technisch", "Softwareentwicklung"]
+    },
+    "id_courseFinan": {
+      "name": "Financial Derivaatives",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "The unit provides students with an in-depth analysis of derivative securities and examines the theoretical underpinnings of numerous derivative pricing models.",
+      "tags": ["Wirtschaft", "Finanzen"]
     }
   }
 }
