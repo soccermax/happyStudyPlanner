@@ -1,0 +1,132 @@
+<app-navbar-view></app-navbar-view>
+
+<div class="container userAreaNav" style="background-color: ghostwhite">
+    <div class="row mb-2 shadow">
+        <div class="col-4 text-center py-2" (click)="activeView = 'Information'" [ngClass]="{'activeView' : activeView === 'Information'}">
+            Information
+        </div>
+        <div class="col-4 text-center py-2" (click)="activeView = 'Modulkatalog'"  [ngClass]="{'activeView' : activeView === 'Modulkatalog'}">
+            Modulkatalog
+        </div>
+        <div class="col-4 text-center py-2" (click)="activeView = 'Aktuelle Modulauswahl'"  [ngClass]="{'activeView' : activeView === 'Aktuelle Modulauswahl'}">
+            Aktuelle Modulauswahl
+        </div>
+    </div>
+</div>
+
+<section *ngIf="activeView === 'Information'">
+    <div class="container" *ngIf="currentUser != undefined && currentResponsible != undefined">
+        <div class="row">
+            <div class="col-12">
+
+                <p><b>Student: </b>{{currentUser.preName}} {{currentUser.name}}</p>
+                <p><b>Verantwortlicher: </b>{{currentResponsible.preName}} {{currentResponsible.name}}</p>
+                <p><b>Hochschule: </b> {{homeUniversity.name}}, {{homeUniversity.country}}</p>
+                <p><b>Partner-Universität: </b>{{partnerUniversity.name}}, {{partnerUniversity.country}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="activeView === 'Modulkatalog'">
+    <div class="container">
+        <div class="row">
+            <div class="col-12" *ngFor="let c of courses">
+                <div class="card shadow-sm m-2">
+                    <div class="card-header">
+                        {{c.name}}
+                        <small class="text-muted"> {{c.major}}</small>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-muted">Modulbeschreibung</h6>
+                        <p class="card-text">{{c.description}}</p>
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="text-muted">Ersetzbar durch:</h6>
+                            </div>
+                            <div class="col-12" *ngFor="let hc of homeCourses">
+                                <h6>{{hc.name}} <small class="text-muted">{{c.major}}</small></h6>
+                                <button class="btn btn-secondary float-right" (click)="addCourseToLearningAgreement(c, hc)">Ersetzen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="activeView === 'Aktuelle Modulauswahl'">
+    <div class="container-fluid py-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Aktuelle Modlauswahl</h6>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length === 0">
+                    <div class="col-12">
+                        <small class="text-muted m-2">Aktuell keine Module ausgewählt.</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" *ngFor="let c of choosenCourses">
+                        <div class="card shadow-sm m-2">
+                            <div class="card-header">
+                                {{c.name}}
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle text-muted">{{c.major}}</h6>
+                                <p class="card-text">{{c.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Abdeckung Gesamtauswahl</h6>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length === 0">
+                    <div class="col-12">
+                        <small class="text-muted m-2">Aktuell keine Module ausgewählt.</small>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length !== 0">
+                    <div class="col-12 p-3">
+                        <h6>Modulabdeckung eigener Abschluss</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Modulabdeckung eigener Abschluss</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Annahmewahrscheinlichkeit HS Karlsruhe</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Annahmewahrscheinlichkeit QUT Brisbane</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="learningAgreement.courses.length != 0">
+            <div class="col-12">
+                <button class="btn btn-info float-right" (click)="createLearningAgreement()">Einreichen</button>
+            </div>
+        </div>
+    </div>
+</section>

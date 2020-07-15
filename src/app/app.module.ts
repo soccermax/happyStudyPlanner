@@ -9,6 +9,7 @@ import { NavbarViewComponent } from './navbar-view/navbar-view.component';
 import { ApplicationViewComponent } from './application-view/application-view.component';
 import { EditAgreementViewComponent } from './student/edit-agreement-view/edit-agreement-view.component';
 import { CourseListViewComponent } from './student/edit-agreement-view/course-list-view/course-list-view.component';
+import { HomeViewComponent } from './home-view/home-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CourseListViewComponent } from './student/edit-agreement-view/course-li
     ApplicationViewComponent,
     EditAgreementViewComponent,
     CourseListViewComponent,
+    HomeViewComponent,
   ],
   imports: [
     BrowserModule,

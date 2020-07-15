@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {NavbarViewComponent} from './navbar-view/navbar-view.component';
+import {CourseListViewComponent} from './student/edit-agreement-view/course-list-view/course-list-view.component';
+import {HomeViewComponent} from './home-view/home-view.component';
+import {EditAgreementViewComponent} from './student/edit-agreement-view/edit-agreement-view.component';
 
 const routes: Routes = [
-  { path: '', component: NavbarViewComponent}
+  { path: '', component: HomeViewComponent},
+  { path: 'cl', component: CourseListViewComponent},
+  { path: 'eA', component: EditAgreementViewComponent}
 ];
 
 @NgModule({

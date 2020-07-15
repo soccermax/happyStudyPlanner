@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserLearningAgreementService} from '../user-learning-agreement.service';
+import {StateService} from '../state.service';
 
 @Component({
   selector: 'app-application-view',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public uS: UserLearningAgreementService,
+              public sS: StateService) { }
 
   ngOnInit(): void {
   }
 
+  editLearningAgreement() {
+    this.sS.state = 'editAgreement';
+  }
 }
