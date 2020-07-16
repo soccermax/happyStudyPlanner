@@ -18,11 +18,14 @@
     <div class="container" *ngIf="currentUser != undefined && currentResponsible != undefined">
         <div class="row">
             <div class="col-12">
-
-                <p><b>Student: </b>{{currentUser.preName}} {{currentUser.name}}</p>
-                <p><b>Verantwortlicher: </b>{{currentResponsible.preName}} {{currentResponsible.name}}</p>
-                <p><b>Hochschule: </b> {{homeUniversity.name}}, {{homeUniversity.country}}</p>
-                <p><b>Partner-Universität: </b>{{partnerUniversity.name}}, {{partnerUniversity.country}}</p>
+                <h6 class="text-muted">Student</h6>
+                <p>{{currentUser.data.preName}} {{currentUser.data.name}}</p>
+                <h6 class="text-muted">Verantwortlicher Ansprechpartner</h6>
+                <p>{{currentResponsible.data.preName}} {{currentResponsible.data.name}}</p>
+                <h6 class="text-muted">Hochschule</h6>
+                <p>{{homeUniversity.name}}, {{homeUniversity.country}}</p>
+                <h6 class="text-muted">Partner Hochschule</h6>
+                <p>{{partnerUniversity.name}}, {{partnerUniversity.country}}</p>
             </div>
         </div>
     </div>
@@ -31,22 +34,25 @@
 <section *ngIf="activeView === 'Modulkatalog'">
     <div class="container">
         <div class="row">
-            <div class="col-12" *ngFor="let c of courses">
+            <div class="col-12" *ngFor="let c of courses"  [ngStyle]="{'opacity' : choosenCourses.includes(c) ? '0.4' : '1'}">
                 <div class="card shadow-sm m-2">
                     <div class="card-header">
-                        {{c.name}}
-                        <small class="text-muted"> {{c.major}}</small>
+                        {{c.data.name}}
+                        <small class="text-muted"> {{c.data.major}}</small>
                     </div>
                     <div class="card-body">
                         <h6 class="text-muted">Modulbeschreibung</h6>
-                        <p class="card-text">{{c.description}}</p>
-                        <div class="row">
+                        <p class="card-text">{{c.data.description}}</p>
+                        <div class="row" *ngIf="!choosenCourses.includes(c)">
                             <div class="col-12">
                                 <h6 class="text-muted">Ersetzbar durch:</h6>
                             </div>
-                            <div class="col-12" *ngFor="let hc of homeCourses">
-                                <h6>{{hc.name}} <small class="text-muted">{{c.major}}</small></h6>
-                                <button class="btn btn-secondary float-right" (click)="addCourseToLearningAgreement(c, hc)">Ersetzen</button>
+                            <div class="col-12" *ngFor="let hc of homeCourses" [ngStyle]="{'opacity' : choosenHomeCoures.includes(hc) ? '0.4' : '1'}">
+                                <h6>{{hc.data.name}} <small class="text-muted">{{hc.data.major}}</small></h6>
+                                <div class="progress m-1" style="width: 80%">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;background-color: lightslategrey" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <button class="btn btn-secondary float-right" [disabled]="this.choosenHomeCoures.includes(hc)" (click)="addCourseToLearningAgreement(c, hc)">Ersetzen</button>
                             </div>
                         </div>
                     </div>
@@ -74,11 +80,11 @@
                     <div class="col-12" *ngFor="let c of choosenCourses">
                         <div class="card shadow-sm m-2">
                             <div class="card-header">
-                                {{c.name}}
+                                {{c.data.name}}
                             </div>
                             <div class="card-body">
-                                <h6 class="card-subtitle text-muted">{{c.major}}</h6>
-                                <p class="card-text">{{c.description}}</p>
+                                <h6 class="card-subtitle text-muted">{{c.data.major}}</h6>
+                                <p class="card-text">{{c.data.description}}</p>
                             </div>
                         </div>
                     </div>
@@ -99,25 +105,25 @@
                     <div class="col-12 p-3">
                         <h6>Modulabdeckung eigener Abschluss</h6>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="col-12 p-3">
                         <h6>Modulabdeckung eigener Abschluss</h6>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="col-12 p-3">
                         <h6>Annahmewahrscheinlichkeit HS Karlsruhe</h6>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="col-12 p-3">
                         <h6>Annahmewahrscheinlichkeit QUT Brisbane</h6>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>

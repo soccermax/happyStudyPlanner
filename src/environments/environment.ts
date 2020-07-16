@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyD-lTUF-lkwfg1VTUsdtBAVUu72vPSiPBY',
+    apiKey: 'AIzaSyCgPq7mSadD-vxnpI1P8mvcGppuNZTDxT8',
     authDomain: 'happystudyplanner.firebaseapp.com',
     databaseURL: 'https://happystudyplanner.firebaseio.com',
     projectId: 'happystudyplanner',
