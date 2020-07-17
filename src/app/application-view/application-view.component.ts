@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserLearningAgreementService} from '../user-learning-agreement.service';
 import {StateService} from '../state.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-application-view',
@@ -9,13 +11,20 @@ import {StateService} from '../state.service';
 })
 export class ApplicationViewComponent implements OnInit {
 
-  constructor(public uS: UserLearningAgreementService,
-              public sS: StateService) { }
+  activeView = 'Aktuelles';
 
-  ngOnInit(): void {
+  constructor(public uS: UserLearningAgreementService,
+              public sS: StateService,
+              public auth: AngularFireAuth,
+              public router: Router) {
+    this.auth.authState.subscribe(user => {
+      if (user) {
+      } else {
+        this.router.navigateByUrl('login');
+      }
+    });
   }
 
-  editLearningAgreement() {
-    this.sS.state = 'editAgreement';
+  ngOnInit(): void {
   }
 }

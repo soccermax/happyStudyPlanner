@@ -1,20 +1,90 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-2">
+
+<div class="container userAreaNav mb-4" style="background-color: ghostwhite;margin-bottom: 40px">
+  <div class="row mb-2 shadow">
+    <div class="col-4 text-center py-2" (click)="activeView = 'Aktuelles'" [ngClass]="{'activeView' : activeView === 'Aktuelles'}">
+      Aktuelles
     </div>
-    <div class="col-10">
-      <div class="card">
+    <div class="col-4 text-center py-2" (click)="activeView = 'Nachrichten'"  [ngClass]="{'activeView' : activeView === 'Nachrichten'}">
+      Nachrichten <span class="badge badge-danger">9</span>
+    </div>
+    <div class="col-4 text-center py-2" (click)="activeView = 'Anträge'"  [ngClass]="{'activeView' : activeView === 'Anträge'}">
+      Anträge <span class="badge badge-danger">1</span>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3" *ngIf="activeView === 'Aktuelles'">
+  <div class="row m-2">
+    <div class="col-6 text-center">
+      <img src="https://www.hs-karlsruhe.de/fileadmin/_processed_/b/c/csm_UMP-Bildschirmfoto2020-07-14um11-30uhr_HsKA_16x9_951680d60c.jpg" class="img-responsive shadow-sm" width="70%"
+           style="border-bottom: solid crimson 5px;">
+    </div>
+    <div class="col-6">
+      <h5 style="font-weight: 400">Anforderungen an die Hochschulen aufgrund der neuen Coronaverordnung</h5>
+      <p style="font-weight: 300;font-size: 14px">Nach derzeitiger Einschätzung des Ministeriums für Wissenschaft, Forschung und Kunst Baden-Württemberg (MWK) sieht die Neufassung der neuen, seit dem 1. Juli 2020 gültigen Coronaverordnung (CoronaVO) im Wesentlichen nunmehr folgende Regelungen für die Hochschulen des Landes vor. Die relevanten Paragraphen entnehmen Sie bitte der CoronaVO, die per Klick im Anschluss an diesen Informationstext abgerufen werden kann.</p>
+      <h6 class="text-muted float-right">Mehr dazu</h6>
+    </div>
+  </div>
+  <hr>
+  <div class="row m-2">
+    <div class="col-6 text-center">
+      <img src="https://www.hs-karlsruhe.de/fileadmin/_processed_/5/9/csm_Discovere_Co-Founder_GOEM16-9_fdde888e1a.png" class="img-responsive shadow-sm" width="70%"
+           style="border-bottom: solid crimson 5px;">
+    </div>
+    <div class="col-6">
+      <h5 style="font-weight: 400">Discover|e - Elektroautos im Mehrfamilienhaus privat laden</h5>
+      <p style="font-weight: 300;font-size: 14px">„Das Ladesystem ‚Deliver|e‘ von Discover|e löst die Problematik begrenzter Leistung in einem Mehrfamilienhaus. Dank des intelligenten Verteilsystems von Discover|e kann jedes Auto mit eigenem Stellplatz optimal mit Energie versorgt werden“, erklärt Mitgründerin Kathi Schumacher. „Dabei ist Deliver|e erweiterbar, sodass erstmal ein Stellplatz umgerüstet werden kann und sich später problemlos und sehr kosteneffizient weitere Ladepunkte hinzufügen lassen. Mittels der intelligenten Software kann das System typische Verbrauchsmuster erkennen und passt den Ladevorgang den individuellen Bedürfnissen an“, so Kathi Schumacher weiter. Alle notwendigen Informationen rund um Stromverbrauch und Abrechnung sind für den Endkunden in einer App leicht zugänglich. </p>
+      <h6 class="text-muted float-right">Mehr dazu</h6>
+    </div>
+  </div>
+  <hr>
+  <div class="row m-2">
+    <div class="col-6 text-center">
+      <img src="https://www.hs-karlsruhe.de/fileadmin/_processed_/d/5/csm_Startseite_Webinar_30062020_16zu9_f4f6898dbd.jpg" class="img-responsive shadow-sm" width="70%"
+           style="border-bottom: solid crimson 5px;">
+    </div>
+    <div class="col-6">
+      <h5 style="font-weight: 400">Neues Forschungsprojekt zur nachhaltigen Bewässerung in Marokko</h5>
+      <p style="font-weight: 300;font-size: 14px">Die Innovation von SmaCuMed besteht darin, ein neues Konzept für ein nachhaltiges All-in-one-Bewässerungssystem zu entwickeln und vor Ort in Marokko zu pilotieren. „Marokko ist ein typisch mediterranes Land, das unter großer Wasserarmut leidet. Wasser wird aber dringend für die sich rasch entwickelnde landwirtschaftliche Produktion benötigt“, erläutert Prof. Hoinkis. „Wegen des Klimawandels kann sich Marokko, wie auch andere mediterrane Länder, nicht auf Niederschläge oder Grundwasserquellen verlassen, um seinen Bedarf an Wasser für die Landwirtschaft zu decken. Viele Grundwasserquellen, insbesondere in den Küstenregionen, sind versalzen (Brackwasser) und können nicht für die landwirtschaftliche Bewässerung genutzt werden“, so Hoinkis weiter. Marokko verfügt über ein großes Potenzial an Brackwasser mit einem geschätzten Salzgehalt zwischen 1 und 16 g/l.</p>
+      <h6 class="text-muted float-right">Mehr dazu</h6>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3" *ngIf="activeView === 'Anträge'">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">Learning Agreement Auslandssemester</h5>
-          <h6 class="card-subtitle mb-2 text-muted">QUT Brisbane University</h6>
-          <ul>
-            <li>Aussteller: HS Karlsruhe</li>
-            <li>Einstelldatum: 20.02.2020</li>
-            <li>Ablaufdatum: 20.08.2020</li>
-          </ul>
-          <a href="#" class="card-link float-right">Löschen</a>
-          <a href="#" class="card-link float-right">Erinnerung einstellen</a>
-          <a  class="card-link float-right" (click)="editLearningAgreement()">Bearbeiten</a>
+          <div class="row">
+            <div class="col-2 text-center m-auto">
+              <img src="https://www.qut.edu.au/__data/assets/image/0007/909781/qut-logo-og-1200.jpg" class="img-responsive" height="80px">
+            </div>
+            <div class="col-10">
+              <h6 style="font-weight: 400;margin-bottom: 0px">Learning Agreement Auslandsemester </h6>
+              <small class="text-muted">QUT Brisbane, Australien</small>
+              <div class="row py-2">
+                <div class="col-4 text-center">
+                  <h6 style="margin-bottom: 0">HS Karlsruhe</h6>
+                  <small class="text-muted">Aussteller</small>
+                </div>
+                <div class="col-4 text-center">
+                  <h6 style="margin-bottom: 0">20.02.2020</h6>
+                  <small class="text-muted">Einstelldatum</small>
+                </div>
+                <div class="col-4 text-center">
+                  <h6 style="margin-bottom: 0">20.04.2020 (64 Tage)</h6>
+                  <small class="text-muted">Ablaufdatum</small>
+                </div>
+              </div>
+              <button class="btn btn-primary float-right m-2" routerLink="/eA"
+                      style="border-radius: 0px;background-color: darkseagreen;border: solid white 0px;
+                      font-weight: 300;font-size: 14px"><i
+                      class="fas fa-user-edit"></i> Bearbeiten</button>
+              <button class="btn btn-primary float-right m-2" style="border-radius: 0px;background-color: indianred;border: solid white 0px;font-weight: 300;font-size: 14px"><i class="far fa-trash-alt"></i> Löschen</button>
+              <button class="btn btn-primary float-right m-2" style="border-radius: 0px;background-color: slategrey;border: solid white 0px;font-weight: 300;font-size: 14px"><i class="far fa-clock"></i> Erinnerung einstellen</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

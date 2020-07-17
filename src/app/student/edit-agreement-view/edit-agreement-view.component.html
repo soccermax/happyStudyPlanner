@@ -15,6 +15,15 @@
 </div>
 
 <section *ngIf="activeView === 'Information'">
+    <div class="container" *ngIf="currentUser === undefined && currentResponsible === undefined">
+        <div class="row">
+            <div class="col-12 text-center m-4">
+                        <div class="spinner-border" role="status" style="color: crimson">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+            </div>
+        </div>
+    </div>
     <div class="container" *ngIf="currentUser != undefined && currentResponsible != undefined">
         <div class="row">
             <div class="col-12">
@@ -64,6 +73,7 @@
 
 <section *ngIf="activeView === 'Aktuelle Modulauswahl'">
     <div class="container-fluid py-3">
+
         <div class="row">
             <div class="col-6">
                 <div class="row">
