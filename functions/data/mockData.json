@@ -1,26 +1,26 @@
 {
   "user": {
-    "b01f19fd-2d8d-467a-8e20-b9b0c9cc8cd3": {
+    "id_userMax": {
       "email": "max.grunfelder@gmail.com",
       "name": "Gruenfelder",
       "preName": "Max",
       "role": "Professor",
       "studentId": "582563",
-      "university": "249d7a60-a8fe-4e21-af85-20c5e130e9e9",
+      "university": "id_uniKA",
       "major": "",
       "gender": "male"
     },
-    "3f7313f4-58f8-436a-8105-9723607e8f4f": {
+    "id_userChris": {
       "email": "christian.axtmann@web.de",
       "name": "Axtmann",
       "preName": "Christian",
       "role": "Student",
       "studentId": "572953",
-      "university": "249d7a60-a8fe-4e21-af85-20c5e130e9e9",
+      "university": "id_uniKA",
       "major": "Wirtschaftsinformatik",
       "gender": "male"
     },
-    "6531d866-1bba-4902-93a7-cbcdab697b01": {
+    "id_userKira": {
       "email": "kira.dorner@web.de",
       "name": "Dorner",
       "preName": "Kira",
@@ -32,67 +32,194 @@
     }
   },
   "learningAgreement": {
-    "990b5be9-9d7d-424f-8e94-3a907b9d3449": {
+    "id_learningAgreement1": {
       "approved": false,
       "lastEvaluatedOn": "NEVER",
       "courses": [
         {
-          "courseHomeUniversity": "651992c6-1a5e-4067-a121-b8022ff44fec",
-          "courseTargetUniversity": "766a9702-e45d-4904-acf5-eac23487bb45"
+          "courseHomeUniversity": "id_courseSWE",
+          "courseTargetUniversity": "id_courseSWDev"
         }
       ],
-      "responsible": "b01f19fd-2d8d-467a-8e20-b9b0c9cc8cd3",
+      "responsible": "id_userMax",
       "score": 95,
-      "student": "3f7313f4-58f8-436a-8105-9723607e8f4f",
-      "targetUniversity": "0e165c8d-e5c6-45dd-9f96-02d10933eabe",
+      "student": "id_userChris",
+      "targetUniversity": "id_uniQueens",
       "lastModifiedOn": "NEVER"
     },
-    "89cdd865-8d39-4c8d-ac00-a11c2dee20c2": {
+    "id_learningAgreement2": {
       "approved": false,
       "lastEvaluatedOn": "YESTERDAY",
       "courses": [
         {
-          "courseHomeUniversity": "651992c6-1a5e-4067-a121-b8022ff44fec",
-          "courseTargetUniversity": "766a9702-e45d-4904-acf5-eac23487bb45"
+          "courseHomeUniversity": "id_courseSWE",
+          "courseTargetUniversity": "id_courseSWDev"
         }
       ],
-      "responsible": "b01f19fd-2d8d-467a-8e20-b9b0c9cc8cd3",
+      "responsible": "id_userMax",
       "score": 97,
-      "student": "6531d866-1bba-4902-93a7-cbcdab697b01",
-      "targetUniversity": "0e165c8d-e5c6-45dd-9f96-02d10933eabe",
+      "student": "id_userKira",
+      "targetUniversity": "id_uniQueens",
       "lastModifiedOn": "NOW"
     }
   },
   "university": {
-    "249d7a60-a8fe-4e21-af85-20c5e130e9e9": {
+    "id_uniKA": {
       "name": "Karlsruhe University of Applied Sciences",
       "language": "Deutsch",
       "country": "Deutschland"
     },
-    "0e165c8d-e5c6-45dd-9f96-02d10933eabe": {
+    "id_uniQueens": {
       "name": "University of Queensland",
       "language": "English",
       "country": "Australien"
+    },
+     "id_uniLake": {
+      "name": "Lakehead University",
+      "language": "English",
+      "country": "Canada"
+    },
+      "id_uniPHKa": {
+      "name": "Pädagogische Hochschule Karlsruhe",
+      "language": "Deutsch",
+      "country": "Deutschland"
     }
   },
   "course": {
-    "651992c6-1a5e-4067-a121-b8022ff44fec": {
+    "id_courseSWE": {
       "name": "Software Engineering",
       "creditPoints": 5,
-      "university": "249d7a60-a8fe-4e21-af85-20c5e130e9e9",
+      "university": "id_uniKA",
       "major": "Wirtschaftsinformatik",
       "language": "Deutsch",
       "description": "Es wird dich der Jürgen würgen",
       "tags": ["Informatik", "Software Entwicklung", "Technisch", "Wirtschaftsinformatik"]
     },
-    "766a9702-e45d-4904-acf5-eac23487bb45": {
+    "id_courseSWDev": {
       "name": "Software Development",
       "creditPoints": 6,
-      "university": "0e165c8d-e5c6-45dd-9f96-02d10933eabe",
+      "university": "id_uniQueens",
       "major": "Informatik",
       "language": "Englisch",
       "description": "Vermitteln von grundlegende Kenntnisse über Software Entwicklung",
       "tags": ["Informatik", "Software Entwicklung", "Technisch", "Informatik"]
+    },
+    "id_courseITS": {
+      "name": "IT-Sicherheit",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "Vermitteln von praktischen und sicherheitsorientierten Umgang mit IT-Systemen",
+      "tags": ["Informatik", "Sicherheit", "Betriebssysteme"]
+    },
+"id_courseFW": {
+      "name": "Finanzwirtschaft",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über das Gebiet der Finanzierung",
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+    },
+  "id_courseMark": {
+      "name": "Marketing",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über wesentliche Gebiete des Marketings",
+      "tags": ["Marketing", "Wirtschaft", "Unternehmenspolitik"]
+    },
+ "id_courseProdorg": {
+      "name": "Produktionsorganisation",
+      "creditPoints": 5,
+      "university": "id_uniKA",
+      "major": "Wirtschaft",
+      "language": "Deutsch",
+      "description": "Überblick über wesentliche betrieblichen und überbetrieblichen Koordinationsprozesse",
+      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+    },
+"id_courseOpMa": {
+      "name": "Operations Management 2",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Emphasizes the management of manufacturing activities",
+      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+    },
+    "id_courseBI": {
+      "name": "Business Intelligence",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Exploration of concepts, tools and techniques surrounding the use of data for supporting managerial decisions, and developing insight relevant to achieving the goals of an organization.",
+      "tags": ["Entscheidungen", "Wirtschaft", "Management", "Datenanalyse"]
+    },
+    "id_courseFI": {
+      "name": "Finance 2",
+      "creditPoints": 5,
+      "university": "id_uniLaHe",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Extends the field of corporate finance to include financial planning and analysis",
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+    },
+ "id_courseEt": {
+      "name": "Grundlagen der Ethik",
+      "creditPoints": 5,
+      "university": "id_uniPHKa",
+      "major": "Lehramt",
+      "language": "Deutsch",
+      "description": "Sie können den philosophischen Charakter der Frage nach Moral erläutern, auch in Differenzierung zu vorrangig nichtphilosophischen Auseinandersetzungen;",
+      "tags": ["Lehramt", "Ethik", "Philosophie"]
+    },
+ "id_courseTheo": {
+      "name": "Theologisches Basiswissen",
+      "creditPoints": 5,
+      "university": "id_uniPHKa",
+      "major": "Lehramt",
+      "language": "Deutsch",
+      "description": "Sie können verschiedene Erkenntnis- und Arbeitsmethoden der biblischen, historischen, systematischen und praktischen Theologie in ihren spezifischen Möglichkeiten einschätzen und anwenden;",
+      "tags": ["Lehramt", "Theologie", "Glaube"]
+    },
+ "id_courseModell": {
+      "name": "Modelling Techniques for Information Systems",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "The unit aims to develop an appreciation, and an ability to manage, the complexity of contemporary and future information systems and the domains in which they are used.",
+      "tags": ["Wissenschaft", "Technik", "Informatik"]
+    },
+    "id_courseMa": {
+      "name": "Marketing",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "Marketing introduces students to key marketing strategies and tactics in order to adapt and respond to a continuously changing marketplace.",
+      "tags": ["Wirtschaft", "Marketing", "Kundenverständnis"]
+    },
+    "id_courseWebC": {
+      "name": "Web Computing",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Informatik",
+      "language": "Englisch",
+      "description": "This unit is a technical introduction to modern web computing.",
+      "tags": ["Informatik", "Technisch", "Softwareentwicklung"]
+    },
+    "id_courseFinan": {
+      "name": "Financial Derivaatives",
+      "creditPoints": 12,
+      "university": "id_uniQueens",
+      "major": "Wirtschaft",
+      "language": "Englisch",
+      "description": "The unit provides students with an in-depth analysis of derivative securities and examines the theoretical underpinnings of numerous derivative pricing models.",
+      "tags": ["Wirtschaft", "Finanzen"]
     }
   }
 }

@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 dist/
+.idea/
 # Firebase cache
 .firebase/
 
@@ -65,3 +66,6 @@ node_modules/
 .env
 functions/tsconfig.json
 .DS_Store
+.vscode/*
+src/environments/environment.prod.ts
+src/environments/environment.ts
