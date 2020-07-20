@@ -9,6 +9,9 @@ import { NavbarViewComponent } from './navbar-view/navbar-view.component';
 import { ApplicationViewComponent } from './application-view/application-view.component';
 import { EditAgreementViewComponent } from './student/edit-agreement-view/edit-agreement-view.component';
 import { CourseListViewComponent } from './student/edit-agreement-view/course-list-view/course-list-view.component';
+import { HomeViewComponent } from './home-view/home-view.component';
+import { LoginViewComponent } from './login-view/login-view.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,15 @@ import { CourseListViewComponent } from './student/edit-agreement-view/course-li
     ApplicationViewComponent,
     EditAgreementViewComponent,
     CourseListViewComponent,
+    HomeViewComponent,
+    LoginViewComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

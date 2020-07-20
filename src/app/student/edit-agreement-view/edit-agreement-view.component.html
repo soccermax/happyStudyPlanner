@@ -1,0 +1,258 @@
+<app-navbar-view></app-navbar-view>
+
+<div class="container py-3" *ngIf="done">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5>Learning Agreement erfolgreich eingereicht.</h5>
+         </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 text-center">
+            <p class="text-muted">Eine Benachrichtigung wurde an die zuständige Person weitergeleitet. Über den weiteren Vorgang wirst du in den kommenden Tagen per E-Mail informiert!</p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h6>Bearbeitungsstand</h6>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-3 text-center">
+            <i class="fas fa-check-square" style="color: mediumseagreen;font-size: 25px"></i><br>
+            <small class="text-muted">Genehmigung Auslandsemester</small>
+        </div>
+        <div class="col-3 text-center">
+            <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+            <small class="text-muted">Abgabe Learning Aggrement</small>
+        </div>
+        <div class="col-3 text-center">
+            <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+            <small class="text-muted">Annahme HS Karlsruhe</small>
+        </div>
+        <div class="col-3 text-center">
+            <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+            <small class="text-muted">Annahme QUT Brisbane</small>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-12">
+            <button class="btn btn-success" style="background-color: transparent;color: dimgrey;font-size: 12px">Fertig</button>
+        </div>
+    </div>
+</div>
+<div class="container userAreaNav" style="background-color: ghostwhite" *ngIf="!done">
+    <div class="row mb-2 shadow">
+        <div class="col-4 text-center py-2" (click)="activeView = 'Information'" [ngClass]="{'activeView' : activeView === 'Information'}">
+            Information
+        </div>
+        <div class="col-4 text-center py-2" (click)="activeView = 'Modulkatalog'"  [ngClass]="{'activeView' : activeView === 'Modulkatalog'}">
+            Modulkatalog
+        </div>
+        <div class="col-4 text-center py-2" (click)="activeView = 'Aktuelle Modulauswahl'"  [ngClass]="{'activeView' : activeView === 'Aktuelle Modulauswahl'}">
+            Aktuelle Modulauswahl
+        </div>
+    </div>
+</div>
+
+<section *ngIf="activeView === 'Information'">
+    <div class="container" *ngIf="currentUser === undefined && currentResponsible === undefined">
+        <div class="row">
+            <div class="col-12 text-center m-4">
+                        <div class="spinner-border" role="status" style="color: crimson">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3" *ngIf="currentUser != undefined && currentResponsible != undefined">
+        <div class="row">
+            <div class="col-12">
+                <h6>Bearbeitungsstand</h6>
+            </div>
+        </div>
+        <div class="row py-3">
+            <div class="col-3 text-center">
+                <i class="fas fa-check-square" style="color: mediumseagreen;font-size: 25px"></i><br>
+                <small class="text-muted">Genehmigung Auslandsemester</small>
+            </div>
+            <div class="col-3 text-center">
+                <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+                <small class="text-muted">Abgabe Learning Aggrement</small>
+            </div>
+            <div class="col-3 text-center">
+                <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+                <small class="text-muted">Annahme HS Karlsruhe</small>
+            </div>
+            <div class="col-3 text-center">
+                <i class="fas fa-check-square" style="color: darkgrey;font-size: 25px"></i><br>
+                <small class="text-muted">Annahme QUT Brisbane</small>
+            </div>
+        </div>
+        <div class="row py-3">
+            <div class="col-12">
+                <small class="text-muted">Student</small>
+                <p>{{currentUser.data.preName}} {{currentUser.data.name}}</p>
+                <small class="text-muted">Verantwortlicher Ansprechpartner</small>
+                <p>{{currentResponsible.data.preName}} {{currentResponsible.data.name}}</p>
+                <small class="text-muted">Hochschule</small>
+                <p>{{homeUniversity.data.name}}, {{homeUniversity.data.country}}</p>
+                <small class="text-muted">Partner Hochschule</small>
+                <p>{{partnerUniversity.data.name}}, {{partnerUniversity.data.country}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="activeView === 'Modulkatalog'">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-3">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="background-color: transparent;color: dimgrey;width: 100%">
+                        Studienrichtung
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Informatics</a>
+                        <a class="dropdown-item" href="#">Administration</a>
+                        <a class="dropdown-item" href="#">Software Engineering</a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: transparent;color: dimgrey;width: 100%">
+                            Campus
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Golden Campus</a>
+                            <a class="dropdown-item" href="#">Loftus Road</a>
+                            <a class="dropdown-item" href="#">Groove Street</a>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-3">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="background-color: transparent;color: dimgrey;width: 100%">
+                        Interessensrichtung
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Entrepreneurship</a>
+                        <a class="dropdown-item" href="#">Data Science</a>
+                        <a class="dropdown-item" href="#">Machine Learning</a>
+                        <a class="dropdown-item" href="#">KI</a>
+                        <a class="dropdown-item" href="#">Robotics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" *ngFor="let c of partnerCourses"  [ngStyle]="{'opacity' : choosenCourses.includes(c) ? '0.4' : '1'}">
+                <div class="card shadow-sm m-2">
+                    <div class="card-header">
+                        {{c.data.name}}
+                        <small class="text-muted"> {{c.data.major}}</small>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-muted">Modulbeschreibung</h6>
+                        <p class="card-text">{{c.data.description}}</p>
+                        <div class="row" *ngIf="!choosenCourses.includes(c)">
+                            <div class="col-12">
+                                <h6 class="text-muted">Ersetzbar durch:</h6>
+                            </div>
+                            <div class="col-12" *ngFor="let hc of homeCourses;let i = index" [ngStyle]="{'opacity' : choosenHomeCoures.includes(hc) ? '0.4' : '1'}">
+                                <h6>{{hc.data.name}} <small class="text-muted">{{hc.data.major}}</small></h6>
+                                <div class="progress m-1" style="width: 80%">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;background-color: lightslategrey" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
+                                         [ngStyle]="{'width' : i === 0 ? '60%' : '80%', 'background-color' : i === 0 ? 'orange' : 'mediumseagreen'}"></div>
+                                </div>
+                                <button class="btn btn-secondary float-right" [disabled]="this.choosenHomeCoures.includes(hc)" (click)="addCourseToLearningAgreement(c, hc)">Ersetzen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="activeView === 'Aktuelle Modulauswahl'">
+    <div class="container-fluid py-3">
+
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Aktuelle Modlauswahl</h6>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length === 0">
+                    <div class="col-12">
+                        <small class="text-muted m-2">Aktuell keine Module ausgewählt.</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" *ngFor="let c of choosenCourses">
+                        <div class="card shadow-sm m-2">
+                            <div class="card-header">
+                                {{c.data.name}}
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle text-muted">{{c.data.major}}</h6>
+                                <p class="card-text">{{c.data.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Abdeckung Gesamtauswahl</h6>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length === 0">
+                    <div class="col-12">
+                        <small class="text-muted m-2">Aktuell keine Module ausgewählt.</small>
+                    </div>
+                </div>
+                <div class="row" *ngIf="choosenCourses.length !== 0">
+                    <div class="col-12 p-3">
+                        <h6>Modulabdeckung eigener Abschluss</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Modulabdeckung eigener Abschluss</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Annahmewahrscheinlichkeit HS Karlsruhe</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h6>Annahmewahrscheinlichkeit QUT Brisbane</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="learningAgreement.courses.length != 0">
+            <div class="col-12">
+                <button class="btn btn-info float-right" (click)="createLearningAgreement()">Einreichen</button>
+            </div>
+        </div>
+    </div>
+</section>

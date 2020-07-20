@@ -5,11 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:productive": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "deploy:frontend": "npm run build:productive && firebase deploy --only hosting:happyStudyPlanner"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

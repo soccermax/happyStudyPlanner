@@ -1,11 +1,37 @@
 <!-- Just an image -->
-<nav class="navbar navbar-light bg-light" style="background-color: crimson !important;">
-  <a class="navbar-brand" href="#">
-    <img src="https://upload.wikimedia.org/wikipedia/de/thumb/5/5c/Hska_logo.svg/1280px-Hska_logo.svg.png"
-         width="90" height="30" alt="">
-  </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: crimson !important;">
+  <a class="navbar-brand" href="#">HSOnline</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"style="color: whitesmoke !important;">Start</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"style="color: whitesmoke !important;">Website</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color: whitesmoke !important;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Einstellungen
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Suchen.." aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="border-color: transparent;background-color: whitesmoke;color: dimgrey"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
 </nav>
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light shadow-sm mb-4" style="background-color: ghostwhite !important;border-bottom: solid crimson 2px">
   <a class="navbar-brand" href="#">
     <img src="https://www.bwl-studieren.com/fileadmin/user_upload/Inhalte/bwl-studieren.com/Schueler-Fragen/Student-Johannes.jpg"
          width="80" height="80" alt="">
@@ -14,31 +40,4 @@
        width="90" height="30" alt="">
 </nav>
 
-<div class="container" style="margin: 2rem">
-  <div class="row">
-    <div class="col-12">
-      <ul class="nav" style="background-color: whitesmoke">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Aktuelles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Nachrichten</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Anträge</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mein Profil</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<div class="container" style="margin: 3rem">
-  <div class="row">
-    <div class="col-12">
-      <app-application-view></app-application-view>
-    </div>
-  </div>
-</div>

@@ -1,1 +1,22 @@
-<p>course-list-view works!</p>
+<app-edit-agreement-view></app-edit-agreement-view>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ul style="list-style-type: none;padding: 0">
+                <li *ngFor="let c of courses">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{c.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{c.major}}</h6>
+                            <p class="card-text">{{c.description}}</p>
+                            <a href="#" class="card-link">Erfahrungsberichte</a>
+                            <a href="#" class="card-link">Mehr</a>
+                            <a class="card-link" (click)="addCourse(c.id)">Hinzufügen</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
