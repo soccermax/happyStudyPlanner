@@ -7,10 +7,10 @@ import {EditAgreementViewComponent} from './student/edit-agreement-view/edit-agr
 import {LoginViewComponent} from './login-view/login-view.component';
 
 const routes: Routes = [
-  { path: '', component: HomeViewComponent},
+  { path: 'home', component: HomeViewComponent},
   { path: 'cl', component: CourseListViewComponent},
   { path: 'eA', component: EditAgreementViewComponent},
-  { path: 'login', component: LoginViewComponent}
+  { path: '', component: LoginViewComponent}
 ];
 
 @NgModule({

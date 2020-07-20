@@ -17,16 +17,19 @@ import {Router} from '@angular/router';
 })
 export class EditAgreementViewComponent implements OnInit {
 
+  done = false;
 
   activeView = 'Information';
   currentUser: any;
   firebaseUser: any;
   currentResponsible: any;
-  homeUniversity = new University('bG6UlgkEQFJQzsXptaZZ', 'Deutschland', 'Deutsch', 'Karlsruhe University of Applied Sciences');
-  partnerUniversity = new University('3UaB7ihAqwfg2DEdMBSc', 'Australien', 'Englisch', 'University of Brisbane');
+  universitys: any[];
+  homeUniversity: any;
+  partnerUniversity: any;
 
   courses: any[];
   homeCourses: any[];
+  partnerCourses: any[];
   users: any[];
   learningAgreement = new LearningAgreement(false, null, null, null, null,
       null, null, []);
@@ -47,6 +50,7 @@ export class EditAgreementViewComponent implements OnInit {
         this.router.navigateByUrl('login');
       }
     });
+    this.getAllUniversitys();
     this.getAllCourses();
     this.getAllUsers();
   }
@@ -58,7 +62,8 @@ export class EditAgreementViewComponent implements OnInit {
     this.courseService.getAllCourses()
         .subscribe(res => {
           this.courses = res;
-          this.homeCourses = this.courses.filter(c => c.data.university = this.homeUniversity.id);
+          this.homeCourses = this.courses.filter(c => c.data.university === this.homeUniversity.id);
+          this.partnerCourses = this.courses.filter(c => c.data.university === this.partnerUniversity.id);
         });
   }
 
@@ -67,6 +72,24 @@ export class EditAgreementViewComponent implements OnInit {
         .subscribe(res => {
           this.users = res;
           this.setUserRoles();
+        });
+  }
+
+  getAllUniversitys(): void {
+    this.universityService.getAllUniversitys()
+        .subscribe(res => {
+          this.universitys = res;
+          this.universitys.forEach(u => {
+            const id = u.id;
+            const d = u.data as University;
+            if (d.name === 'Karlsruhe University of Applied Sciences') {
+              this.homeUniversity = u;
+            }
+            if (d.name === 'University of Queensland') {
+              this.partnerUniversity = u;
+            }
+          });
+          this.getAllCourses();
         });
   }
 
@@ -92,6 +115,8 @@ export class EditAgreementViewComponent implements OnInit {
     this.learningAgreement.responsible = this.currentResponsible.id;
     this.learningAgreement.score = 92;
     this.lAService.createLearningAgreement(this.learningAgreement);
+    this.done = true;
+    this.activeView = 'none';
   }
 
   getCurrentUser(): void {
