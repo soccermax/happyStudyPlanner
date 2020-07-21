@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <mate charest="utf-8" />
-    <title>Learning Agreement genehmigt</title>
-  </head>
-  <body>
-    <h1>Learning Agreement genehmigt</h1>
-    <p>Name: {{student.preName}}</p>
-    <ul>
-      {{#each courses}}
-      <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
-      <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
-      <br />
-      {{/each}}
-    </ul>
-  </body>
+<head>
+  <mate charest="utf-8" />
+  <title>Learning Agreement genehmigt</title>
+</head>
+<body>
+<p>Sehr geehrter Herr {{student.name}},</p>
+<h1>Ihr Learning Agreement wurde genehmigt.</h1>
+<p>Im folgenden sehen Sie die Auswahl Ihrere Kurse an der {{partnerUniversity.name}} und die Kurse die an der {{homeUniversity.name}} dafür ersetzt wurden.</p>
+<ul>
+  {{#each courses}}
+  <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
+  <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
+  <br />
+  {{/each}}
+</ul>
+<p>Bei Rückfragen oder Anmerkungen melden Sie sich bitte bei Ihrem zugeordneten Ansprechpartner.</p>
+<p>Mit freundlichen Grüßen</p>
+<h1>{{homeUniversity.name}}</h1>
+</body>
 </html>
