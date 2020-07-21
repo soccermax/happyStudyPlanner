@@ -45,8 +45,11 @@ api.post("/learningAgreement/:learningAgreementId/comments/", async (req, res) =
   if (!learningAgreementId || learningAgreementId.length === 0) {
     return res.status(400).send("The provided id is not a valid learningAgreement ID");
   }
+  if (req.body === undefined || req.body === null) {
+    return res.status(400).send("Comments are missing");
+  }
   await saveCommentsForLearningAgreement(learningAgreementId, req.body);
-  return res.send(200);
+  return res.sendStatus(200);
 });
 
 module.exports = {
