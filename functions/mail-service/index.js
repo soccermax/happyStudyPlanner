@@ -11,6 +11,7 @@ const basicTemplatePath = path.resolve(__dirname, "template");
 
 const templates = {
   learningAgreementApprovedDe: "learningAgreementApproved_de.html",
+  learningAgreementRejectedDe: "learningAgreementRejected_de.html",
 };
 
 const normalVariableReplacer = (text, replacerMap) =>
@@ -22,6 +23,7 @@ const normalVariableReplacer = (text, replacerMap) =>
 const repeatedVariableReplacer = (text, replacerMap) =>
   text.replace(/(\s*)<!--{{(REPEATED_.+?)}}-->(.*)<!--{{\2}}-->/g, (match, prefix, varName, innerText) => {
     const subReplacerArray = replacerMap[varName];
+    console.log(subReplacerArray);
     return subReplacerArray === null || !Array.isArray(subReplacerArray) || subReplacerArray.length === 0
       ? ""
       : subReplacerArray.map((subReplacerMap) => prefix + normalVariableReplacer(innerText, subReplacerMap)).join("\n");
@@ -41,12 +43,27 @@ const sendLearningAgreementApproved = async (receiver, parameterMap, metadata) =
     (await readTemplate(templates.learningAgreementApprovedDe)).toString(),
     parameterMap
   );
-  body = repeatedVariableReplacer(body, parameterMap);
   return body !== null
     ? _queueEmail(
         {
           to: receiver,
           subject: "Dein Learning Agreement wurde genehmigt",
+          html: body,
+        },
+        metadata
+      )
+    : Promise.resolve();
+};
+
+const sendLearningAgreementRejected = async (receiver, parameterMap, metadata) => {
+  let body = (await readTemplate(templates.learningAgreementRejectedDe)).toString();
+  body = repeatedVariableReplacer(body, parameterMap);
+  body = normalVariableReplacer(body, parameterMap);
+  return body !== null
+    ? _queueEmail(
+        {
+          to: receiver,
+          subject: "Dein Learning Agreement wurde abgelehnt",
           html: body,
         },
         metadata
@@ -75,4 +92,5 @@ const _queueEmail = async (emailPayload, metadata) => {
 
 module.exports = {
   sendLearningAgreementApproved,
+  sendLearningAgreementRejected,
 };

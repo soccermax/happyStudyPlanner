@@ -39,6 +39,7 @@ const getLearningAgreementById = async (id, deep = false) => {
     getUserById(learningAgreement.responsible),
     getUserById(learningAgreement.student),
   ]);
+  student.id = learningAgreement.student;
   learningAgreement.targetUniversity = targetUniversity;
   learningAgreement.responsible = responsible;
   learningAgreement.student = student;
@@ -95,7 +96,7 @@ const saveCommentsForLearningAgreement = async (id, comments) => {
       learningAgreement.courses[index].comment = comment;
     });
     await db.collection(collections.LEARNING_AGREEMENT).doc(id).update({
-      approved: status,
+      approved: false,
       courses: learningAgreement.courses,
       lastEvaluatedOn: firestore.FieldValue.serverTimestamp(),
     });
