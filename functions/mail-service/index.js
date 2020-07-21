@@ -19,6 +19,14 @@ const normalVariableReplacer = (text, replacerMap) =>
     return value === null ? "" : value;
   });
 
+const repeatedVariableReplacer = (text, replacerMap) =>
+  text.replace(/(\s*)<!--{{(REPEATED_.+?)}}-->(.*)<!--{{\2}}-->/g, (match, prefix, varName, innerText) => {
+    const subReplacerArray = replacerMap[varName];
+    return subReplacerArray === null || !Array.isArray(subReplacerArray) || subReplacerArray.length === 0
+      ? ""
+      : subReplacerArray.map((subReplacerMap) => prefix + normalVariableReplacer(innerText, subReplacerMap)).join("\n");
+  });
+
 const readTemplate = async (name) => {
   try {
     return await readFileAsync(path.resolve(basicTemplatePath, name));
@@ -29,10 +37,11 @@ const readTemplate = async (name) => {
 };
 
 const sendLearningAgreementApproved = async (receiver, parameterMap, metadata) => {
-  const body = normalVariableReplacer(
+  let body = normalVariableReplacer(
     (await readTemplate(templates.learningAgreementApprovedDe)).toString(),
     parameterMap
   );
+  body = repeatedVariableReplacer(body, parameterMap);
   return body !== null
     ? _queueEmail(
         {

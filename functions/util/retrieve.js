@@ -42,6 +42,8 @@ const getLearningAgreementById = async (id, deep = false) => {
   learningAgreement.targetUniversity = targetUniversity;
   learningAgreement.responsible = responsible;
   learningAgreement.student = student;
+  learningAgreement.student.fullName = `${student.preName} ${student.name}`;
+  learningAgreement.homeUniversity = await getUniversityById(student.university);
   return learningAgreement;
 };
 
@@ -85,6 +87,23 @@ const setLearningAgreementStatus = async (id, status) => {
   }
 };
 
+const saveCommentsForLearningAgreement = async (id, comments) => {
+  const db = firestore();
+  try {
+    const learningAgreement = await getLearningAgreementById(id);
+    comments.forEach((comment, index) => {
+      learningAgreement.courses[index].comment = comment;
+    });
+    await db.collection(collections.LEARNING_AGREEMENT).doc(id).update({
+      approved: status,
+      courses: learningAgreement.courses,
+      lastEvaluatedOn: firestore.FieldValue.serverTimestamp(),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const _getDocumentById = async (collection, id) => {
   const db = firestore();
   try {
@@ -106,4 +125,5 @@ module.exports = {
   getLearningAgreementById,
   setLearningAgreementStatus,
   getAllLearningAgreementsForUserDeep,
+  saveCommentsForLearningAgreement,
 };
