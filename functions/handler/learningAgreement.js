@@ -2,7 +2,7 @@
 
 const functions = require("firebase-functions");
 const { getUserById, getLearningAgreementById } = require("../util/retrieve");
-const { sendLearningAgreementApproved } = require("../mail-service");
+const { sendLearningAgreementApproved, sendLearningAgreementRejected } = require("../mail-service");
 const { triggerNotification } = require("../alexa-skill");
 const { getImportRunningState } = require("../util/helper");
 
@@ -25,6 +25,18 @@ const onUpdateHandler = functions
       return getImportRunningState()
         ? Promise.resolve()
         : _sendLearningAgreementApprovedEmail(snapshot.after.id, await getLearningAgreementById(snapshot.after.id));
+    } else if (
+      Object.prototype.hasOwnProperty.call(afterUpdate, "approved") &&
+      afterUpdate.approved === false &&
+      Object.prototype.hasOwnProperty.call(afterUpdate, "lastEvaluatedOn") &&
+      afterUpdate.lastEvaluatedOn !== null
+    ) {
+      return getImportRunningState()
+        ? Promise.resolve()
+        : _sendLearningAgreementRejectedEmail(
+            snapshot.after.id,
+            await getLearningAgreementById(snapshot.after.id, true)
+          );
     } else {
       return Promise.resolve();
     }
@@ -36,6 +48,26 @@ const _sendLearningAgreementApprovedEmail = async (id, learningAgreement) => {
     student.email,
     {
       name: student.preName,
+    },
+    { learningAgreementID: id }
+  );
+};
+
+const _sendLearningAgreementRejectedEmail = async (id, learningAgreement) => {
+  const student = await getUserById(learningAgreement.student.id);
+  return sendLearningAgreementRejected(
+    student.email,
+    {
+      name: student.preName,
+      REPEATED_LIST_OF_COURSES: learningAgreement.courses.map((course) => {
+        return {
+          courseHomeUniversityName: course.courseHomeUniversity.name,
+          courseHomeUniversityCreditPoints: course.courseHomeUniversity.creditPoints,
+          courseTargetUniversityName: course.courseTargetUniversity.name,
+          courseTargetUniversityCreditPoints: course.courseTargetUniversity.creditPoints,
+          comment: course.comment,
+        };
+      }),
     },
     { learningAgreementID: id }
   );
