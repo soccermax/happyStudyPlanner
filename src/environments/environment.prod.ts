@@ -5,14 +5,14 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyD-lTUF-lkwfg1VTUsdtBAVUu72vPSiPBY',
-    authDomain: 'happystudyplanner.firebaseapp.com',
-    databaseURL: 'https://happystudyplanner.firebaseio.com',
-    projectId: 'happystudyplanner',
-    storageBucket: 'happystudyplanner.appspot.com',
-    messagingSenderId: '279955782977',
-    appId: '1:279955782977:web:247c73a3fa4dc17f6935c0',
-    measurementId: 'G-3VSWBF3LD0'
+    apiKey: "AIzaSyCgPq7mSadD-vxnpI1P8mvcGppuNZTDxT8",
+    authDomain: "happystudyplanner.firebaseapp.com",
+    databaseURL: "https://happystudyplanner.firebaseio.com",
+    projectId: "happystudyplanner",
+    storageBucket: "happystudyplanner.appspot.com",
+    messagingSenderId: "279955782977",
+    appId: "1:279955782977:web:247c73a3fa4dc17f6935c0",
+    measurementId: "G-3VSWBF3LD0"
   }
 };
 
