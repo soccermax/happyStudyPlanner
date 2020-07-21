@@ -1,11 +1,17 @@
 const mockData = require("../data/mockData.json");
 const admin = require("firebase-admin");
-const { generateFirestoreDocumentID } = require("./helper");
-const { firestore } = require("firebase-admin");
+const { generateFirestoreDocumentID, isLocalFireStore } = require("./helper");
+
 let idMap = {};
 
 const importData = async () => {
   const db = admin.firestore();
+  if (isLocalFireStore) {
+    const snapshot = await db.collection("learningAgreement").get();
+    if (snapshot.size > 0) {
+      return Promise.resolve();
+    }
+  }
   const dbPromises = [];
   try {
     replaceKeyFieldsInCollectionAndDocuments(newIdMap(), mockData);
@@ -28,7 +34,7 @@ const importData = async () => {
         if (currentDocument.lastModifiedOn) {
           if (currentDocument.lastModifiedOn === "NEVER") {
             currentDocument.lastModifiedOn = null;
-          } else if(currentDocument.lastModifiedOn === "TODAY") {
+          } else if (currentDocument.lastModifiedOn === "TODAY") {
             currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(new Date());
           }
         }
