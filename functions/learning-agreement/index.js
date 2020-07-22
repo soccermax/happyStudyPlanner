@@ -69,10 +69,6 @@ const getPDFOptions = () => {
     format: "A4",
     orientation: "portrait",
     border: "10mm",
-    header: {
-      height: "45mm",
-      contents: '<div style="text-align: center;">Author: Max Green</div>',
-    },
     footer: {
       height: "28mm",
       contents: {
