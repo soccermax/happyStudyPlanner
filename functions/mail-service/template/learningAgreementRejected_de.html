@@ -1,6 +1,8 @@
 <html>
-  <p>Hi {{name}},</p>
-  <p>leider wurde dein Learning Agreement abgelehnt. In der unten stehenden Tabelle, kannst du Informationen finden warum.</p>
+  <h6>Informationen zu Ihrem eingereichten Learning Agreement</h6>
+  <p>Sehr geehrter.{{preName}} {{name}},</p>
+  <p>Leider wurde Ihr eingereichtes Learning Agreement für die {{partnerUniversity.name}} abgelehnt.</p>
+  <p>Der verantwortliche Beauftragte hat Ihnen folgende Kommentare hinterlassen:</p>
   <table>
     <tr>
       <th>Kurs Heimuniversität</th>
@@ -12,6 +14,6 @@
     <!--{{REPEATED_LIST_OF_COURSES}}--><tr><td>{{courseHomeUniversityName}}</td><td>{{courseHomeUniversityCreditPoints}}</td><td>{{courseTargetUniversityName}}</td><td>{{courseTargetUniversityCreditPoints}}</td><td>{{comment}}</td></tr><!--{{REPEATED_LIST_OF_COURSES}}-->
   </table>
   <p></p>
-  <p>Kind regards,</p>
-  <p>HS Karlsruhe</p>
+  <p>Mit freundlichen Grüßen</p>
+  <h6>Hochschule Karlsruhe - Technik und Wirtschaft</h6>
 </html>
