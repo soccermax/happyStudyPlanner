@@ -96,9 +96,7 @@ const saveCommentsForLearningAgreement = async (id, comments) => {
       learningAgreement.courses[index].comment = comment;
     });
     await db.collection(collections.LEARNING_AGREEMENT).doc(id).update({
-      approved: false,
       courses: learningAgreement.courses,
-      lastEvaluatedOn: firestore.FieldValue.serverTimestamp(),
     });
   } catch (err) {
     console.error(err);
