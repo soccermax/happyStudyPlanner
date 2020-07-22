@@ -93,7 +93,8 @@
       "major": "Wirtschaftsinformatik",
       "language": "Deutsch",
       "description": "Es wird dich der Jürgen würgen",
-      "tags": ["Informatik", "Software Entwicklung", "Technisch", "Wirtschaftsinformatik"]
+      "tags": ["Informatik", "Software Entwicklung", "Technisch", "Wirtschaftsinformatik"],
+      "file": "8d6d5599-cbae-42ce-9dcb-bb56cc306598.pdf"
     },
     "id_courseSWDev": {
       "name": "Software Development",
@@ -102,7 +103,8 @@
       "major": "Informatik",
       "language": "Englisch",
       "description": "Vermitteln von grundlegende Kenntnisse über Software Entwicklung",
-      "tags": ["Informatik", "Software Entwicklung", "Technisch", "Informatik"]
+      "tags": ["Informatik", "Software Entwicklung", "Technisch", "Informatik"],
+      "file": "09e0384f-9984-4038-a04e-719b9ce2f080.pdf"
     },
     "id_courseITS": {
       "name": "IT-Sicherheit",
@@ -111,7 +113,8 @@
       "major": "Informatik",
       "language": "Englisch",
       "description": "Vermitteln von praktischen und sicherheitsorientierten Umgang mit IT-Systemen",
-      "tags": ["Informatik", "Sicherheit", "Betriebssysteme"]
+      "tags": ["Informatik", "Sicherheit", "Betriebssysteme"],
+      "file": "4370c9e2-0559-4409-a376-645a1d52b2f4.pdf"
     },
     "id_courseFW": {
       "name": "Finanzwirtschaft",
@@ -120,7 +123,8 @@
       "major": "Wirtschaft",
       "language": "Deutsch",
       "description": "Überblick über das Gebiet der Finanzierung",
-      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"],
+      "file": "8c5a1846-56cc-477b-b19a-058aa0b5487b.pdf"
     },
     "id_courseMark": {
       "name": "Marketing",
@@ -129,7 +133,8 @@
       "major": "Wirtschaft",
       "language": "Deutsch",
       "description": "Überblick über wesentliche Gebiete des Marketings",
-      "tags": ["Marketing", "Wirtschaft", "Unternehmenspolitik"]
+      "tags": ["Marketing", "Wirtschaft", "Unternehmenspolitik"],
+      "file": "524a12b7-0978-449e-86ff-8329e41542ed.pdf"
     },
     "id_courseProdorg": {
       "name": "Produktionsorganisation",
@@ -138,7 +143,8 @@
       "major": "Wirtschaft",
       "language": "Deutsch",
       "description": "Überblick über wesentliche betrieblichen und überbetrieblichen Koordinationsprozesse",
-      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+      "tags": ["Produktion", "Wirtschaft", "Organisation"],
+      "file": "5c0d59e7-3f52-4492-9b61-e6b0ad7f0eb6.pdf"
     },
     "id_courseOpMa": {
       "name": "Operations Management 2",
@@ -147,7 +153,7 @@
       "major": "Wirtschaft",
       "language": "Englisch",
       "description": "Emphasizes the management of manufacturing activities",
-      "tags": ["Produktion", "Wirtschaft", "Organisation"]
+      "tags": ["Produktion", "Wirtschaft", "Organisation"] 
     },
     "id_courseBI": {
       "name": "Business Intelligence",
@@ -174,7 +180,8 @@
       "major": "Lehramt",
       "language": "Deutsch",
       "description": "Sie können den philosophischen Charakter der Frage nach Moral erläutern, auch in Differenzierung zu vorrangig nichtphilosophischen Auseinandersetzungen;",
-      "tags": ["Lehramt", "Ethik", "Philosophie"]
+      "tags": ["Lehramt", "Ethik", "Philosophie"],
+      "file": "4c925943-1573-40cd-900f-4a8f3355c347.pdf"
     },
     "id_courseTheo": {
       "name": "Theologisches Basiswissen",
@@ -183,7 +190,8 @@
       "major": "Lehramt",
       "language": "Deutsch",
       "description": "Sie können verschiedene Erkenntnis- und Arbeitsmethoden der biblischen, historischen, systematischen und praktischen Theologie in ihren spezifischen Möglichkeiten einschätzen und anwenden;",
-      "tags": ["Lehramt", "Theologie", "Glaube"]
+      "tags": ["Lehramt", "Theologie", "Glaube"],
+      "file": "4c925943-1573-40cd-900f-4a8f3355c347.pdf"
     },
     "id_courseModell": {
       "name": "Modelling Techniques for Information Systems",
@@ -192,7 +200,8 @@
       "major": "Informatik",
       "language": "Englisch",
       "description": "The unit aims to develop an appreciation, and an ability to manage, the complexity of contemporary and future information systems and the domains in which they are used.",
-      "tags": ["Wissenschaft", "Technik", "Informatik"]
+      "tags": ["Wissenschaft", "Technik", "Informatik"],
+      "file": "bd95df6c-5e8e-45a2-9f30-81be491c3411.pdf"
     },
     "id_courseMa": {
       "name": "Marketing",
@@ -201,7 +210,8 @@
       "major": "Wirtschaft",
       "language": "Englisch",
       "description": "Marketing introduces students to key marketing strategies and tactics in order to adapt and respond to a continuously changing marketplace.",
-      "tags": ["Wirtschaft", "Marketing", "Kundenverständnis"]
+      "tags": ["Wirtschaft", "Marketing", "Kundenverständnis"],
+      "file": "2f0695ed-c4ed-4b9f-9171-fd663cbe2c73.pdf"
     },
     "id_courseWebC": {
       "name": "Web Computing",
@@ -210,7 +220,8 @@
       "major": "Informatik",
       "language": "Englisch",
       "description": "This unit is a technical introduction to modern web computing.",
-      "tags": ["Informatik", "Technisch", "Softwareentwicklung"]
+      "tags": ["Informatik", "Technisch", "Softwareentwicklung"],
+      "file": "2318eaee-9dda-48f5-8fdd-ac3afb270dc0.pdf"
     },
     "id_courseFinan": {
       "name": "Financial Derivaatives",
@@ -219,7 +230,8 @@
       "major": "Wirtschaft",
       "language": "Englisch",
       "description": "The unit provides students with an in-depth analysis of derivative securities and examines the theoretical underpinnings of numerous derivative pricing models.",
-      "tags": ["Wirtschaft", "Finanzen"]
+      "tags": ["Wirtschaft", "Finanzen"],
+      "file": "f604ea29-6564-4fef-b5a1-baaa6cfcaf9c.pdf"
     }
   }
 }
