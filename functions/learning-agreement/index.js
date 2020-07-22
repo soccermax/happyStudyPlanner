@@ -43,7 +43,7 @@ const generatePDFSteam = async (learningAgreementID) => {
         html,
         data: {
           ...learningAgreement,
-          imgSrc
+          imgSrc,
         },
       },
       getPDFOptions()

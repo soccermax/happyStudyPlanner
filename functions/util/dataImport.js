@@ -42,7 +42,6 @@ const importData = async () => {
       });
     });
     await Promise.all(dbPromises);
-    console.log("Import finished");
   } catch (err) {
     console.error("Import Failed");
     throw new Error(err);

@@ -23,7 +23,6 @@ const normalVariableReplacer = (text, replacerMap) =>
 const repeatedVariableReplacer = (text, replacerMap) =>
   text.replace(/(\s*)<!--{{(REPEATED_.+?)}}-->(.*)<!--{{\2}}-->/g, (match, prefix, varName, innerText) => {
     const subReplacerArray = replacerMap[varName];
-    console.log(subReplacerArray);
     return subReplacerArray === null || !Array.isArray(subReplacerArray) || subReplacerArray.length === 0
       ? ""
       : subReplacerArray.map((subReplacerMap) => prefix + normalVariableReplacer(innerText, subReplacerMap)).join("\n");
