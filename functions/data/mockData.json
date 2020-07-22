@@ -162,7 +162,8 @@
       "major": "Wirtschaft",
       "language": "Englisch",
       "description": "Exploration of concepts, tools and techniques surrounding the use of data for supporting managerial decisions, and developing insight relevant to achieving the goals of an organization.",
-      "tags": ["Entscheidungen", "Wirtschaft", "Management", "Datenanalyse"]
+      "tags": ["Entscheidungen", "Wirtschaft", "Management", "Datenanalyse"],
+      "file": ""
     },
     "id_courseFI": {
       "name": "Finance 2",
@@ -171,7 +172,8 @@
       "major": "Wirtschaft",
       "language": "Englisch",
       "description": "Extends the field of corporate finance to include financial planning and analysis",
-      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
+      "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"],
+      "file": ""
     },
     "id_courseEt": {
       "name": "Grundlagen der Ethik",
