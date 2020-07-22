@@ -9,6 +9,8 @@ const readFileAsync = promisify(readFile);
 const { getLearningAgreementById } = require("../util/retrieve");
 
 const basicTemplatePath = path.resolve(__dirname, "template");
+const basicTemplatePathImage = path.resolve(__dirname, "template", "HsKaLogo.png");
+const imgSrc = path.normalize(`file://${basicTemplatePathImage}`);
 
 const templates = {
   learningAgreementApprovedDe: "learningAgreementApproved_de.html",
@@ -41,6 +43,7 @@ const generatePDFSteam = async (learningAgreementID) => {
         html,
         data: {
           ...learningAgreement,
+          imgSrc,
         },
       },
       getPDFOptions()
@@ -66,10 +69,6 @@ const getPDFOptions = () => {
     format: "A4",
     orientation: "portrait",
     border: "10mm",
-    header: {
-      height: "45mm",
-      contents: '<div style="text-align: center;">Author: Max Green</div>',
-    },
     footer: {
       height: "28mm",
       contents: {

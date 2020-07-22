@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      body { font: 1.2em/140% Georgia,Times,'Times New Roman',serif; } 
+      footer { font: 1em/100% Georgia,Times,'Times New Roman',serif; } 
+      h1 { font-size: 1.8em/1.5; font-weight: normal; }
+      .container {
+        position: absolute;
+        top: 4px;
+        right: 16px;
+        font-size: 8px;
+      }
+      .after::after {
+            content: "\A";
+            white-space: pre;
+        }
+      a { font: 0.8em/100% Georgia,Times,'Times New Roman',serif; }
+img { 
+  width: 100;
+    height: 100px;
+    opacity: 1;
+    top: 100px;
+}
+
+
+  </style>
     <mate charest="utf-8" />
     <title>Learning Agreement genehmigt</title>
+    <div class="container">
+      <img src='{{imgSrc}}' />
+    </div>
+    
   </head>
   <body>
     <h1>Learning Agreement genehmigt</h1>
-    <p>Name: {{student.preName}}</p>
+    <p>Name: {{student.preName}}, {{student.name}}</p>
     <ul>
       {{#each courses}}
       <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
@@ -14,5 +42,17 @@
       <br />
       {{/each}}
     </ul>
-  </body>
+    <a>
+      <div class = "absolute">
+        <span class="after"></span>
+        <span class="after"></span>
+        <span class="after"></span>
+        <span class="after"></span>
+        <span class="after"></span>
+      <p>Diese Bescheinigung wurde maschinell erstellt und trägt daher weder Unterschrift noch Siegel. Zusätze und Änderungen
+        bedürfen der ausdrücklichen schriftlichen Bestätigung durch den Auslandsbeauftragten.</p></div>
+       
+    </a> 
+  </body> 
+
 </html>

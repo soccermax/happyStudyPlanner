@@ -21,13 +21,16 @@ const onUpdateHandler = functions
   .firestore.document("learningAgreement/{learningAgreementId}")
   .onUpdate(async (snapshot) => {
     const afterUpdate = snapshot.after.data();
-    if (Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === true) {
+    if (Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === "true") {
       return getImportRunningState()
         ? Promise.resolve()
-        : _sendLearningAgreementApprovedEmail(snapshot.after.id, await getLearningAgreementById(snapshot.after.id));
+        : _sendLearningAgreementApprovedEmail(
+            snapshot.after.id,
+            await getLearningAgreementById(snapshot.after.id, true)
+          );
     } else if (
       Object.prototype.hasOwnProperty.call(afterUpdate, "approved") &&
-      afterUpdate.approved === false &&
+      afterUpdate.approved === "false" &&
       Object.prototype.hasOwnProperty.call(afterUpdate, "lastEvaluatedOn") &&
       afterUpdate.lastEvaluatedOn !== null
     ) {
@@ -43,11 +46,13 @@ const onUpdateHandler = functions
   });
 
 const _sendLearningAgreementApprovedEmail = async (id, learningAgreement) => {
-  const student = await getUserById(learningAgreement.student);
   return sendLearningAgreementApproved(
-    student.email,
+    learningAgreement.student.email,
     {
-      name: student.preName,
+      preName: learningAgreement.student.preName,
+      name: learningAgreement.student.name,
+      partnerUniversityName: learningAgreement.targetUniversity.name,
+      learningAgreementURL: `https://europe-west3-happystudyplanner.cloudfunctions.net/api/learningAgreement/${id}/file`,
     },
     { learningAgreementID: id }
   );
@@ -58,7 +63,9 @@ const _sendLearningAgreementRejectedEmail = async (id, learningAgreement) => {
   return sendLearningAgreementRejected(
     student.email,
     {
-      name: student.preName,
+      preName: student.preName,
+      name: student.name,
+      partnerUniversityName: learningAgreement.targetUniversity.name,
       REPEATED_LIST_OF_COURSES: learningAgreement.courses.map((course) => {
         return {
           courseHomeUniversityName: course.courseHomeUniversity.name,
