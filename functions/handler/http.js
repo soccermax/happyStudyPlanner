@@ -5,6 +5,7 @@ const {
   getAllLearningAgreementsForUserDeep,
   getLearningAgreementById,
   saveCommentsForLearningAgreement,
+  setLearningAgreementStatus,
 } = require("../util/retrieve");
 const { generatePDFSteam } = require("../learning-agreement");
 
@@ -50,6 +51,19 @@ api.post("/learningAgreement/:learningAgreementId/comments/", async (req, res) =
   }
   await saveCommentsForLearningAgreement(learningAgreementId, req.body);
   return res.sendStatus(200);
+});
+
+api.put("/learningAgreement/:learningAgreementId/approved/", async (req, res) => {
+  const { learningAgreementId } = req.params;
+  const { status } = req.query;
+  if (!learningAgreementId || learningAgreementId.length === 0) {
+    return res.status(400).send("The provided id is not a valid learningAgreement ID");
+  }
+  if (!status) {
+    return res.status(400).send("Learning Agreement Status is required: true|falsee");
+  }
+  await setLearningAgreementStatus(learningAgreementId, status);
+  return res.sendStatus(204);
 });
 
 module.exports = {
