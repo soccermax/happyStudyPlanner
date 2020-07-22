@@ -169,7 +169,7 @@
                                 <h6>{{hc.data.name}} <small class="text-muted">{{hc.data.major}}</small></h6>
                                 <div class="progress m-1" style="width: 80%">
                                     <div class="progress-bar" role="progressbar" style="width: 85%;background-color: lightslategrey" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                                         [ngStyle]="{'width' : i === 0 ? '60%' : '80%', 'background-color' : i === 0 ? 'orange' : 'mediumseagreen'}"></div>
+                                        [ngStyle]="{'width' : progressWidth[i] + '%','background-color' : progressWidth[i] >= 80 ? 'mediumseagreen' : 'orange'}"></div>
                                 </div>
                                 <button class="btn btn-secondary float-right" [disabled]="this.choosenHomeCoures.includes(hc)" (click)="addCourseToLearningAgreement(c, hc)">Ersetzen</button>
                             </div>
