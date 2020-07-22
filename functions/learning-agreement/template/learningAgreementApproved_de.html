@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <mate charest="utf-8" />
-    <title>Learning Agreement genehmigt</title>
-  </head>
-  <body>
-    <h1>Learning Agreement genehmigt</h1>
-    <p>Name: {{student.preName}}</p>
-    <ul>
-      {{#each courses}}
-      <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
-      <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
-      <br />
-      {{/each}}
-    </ul>
-  </body>
+<head>
+  <mate charest="utf-8" />
+  <title>Learning Agreement genehmigt</title>
+</head>
+<body>
+<h1>{{homeUniversity.name}}</h1>
+<p>Sehr geehrter Herr/Frau {{student.name}},</p>
+<h3>Ihr Learning Agreement wurde genehmigt.</h1>
+<p>Im folgenden sehen Sie die Auswahl Ihrer Kurse an der {{partnerUniversity.name}} und die Kurse die an der {{homeUniversity.name}} dafür ersetzt wurden.</p>
+<ul>
+  {{#each courses}}
+  <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
+  <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
+  <br />
+  {{/each}}
+</ul>
+<p>Bei Rückfragen oder Anmerkungen melden Sie sich bitte bei Ihrem zugeordneten Ansprechpartner.</p>
+<p>Mit freundlichen Grüßen</p>
+<h3>{{homeUniversity.name}}</h1>
+<p><font size="2" </font>Diese Bescheinigung wurde maschinell erstellt und trägt daher weder Unterschrift noch Siegel.
+Zusätze und Änderungen bedürfen der ausdrücklichen schriftlichen Bestätigung durch den Auslandsbeauftragten.</p>
+</body>
 </html>
