@@ -74,12 +74,12 @@
       "language": "English",
       "country": "Australien"
     },
-     "id_uniLake": {
+    "id_uniLake": {
       "name": "Lakehead University",
       "language": "English",
       "country": "Canada"
     },
-      "id_uniPHKa": {
+    "id_uniPHKa": {
       "name": "Pädagogische Hochschule Karlsruhe",
       "language": "Deutsch",
       "country": "Deutschland"
@@ -113,7 +113,7 @@
       "description": "Vermitteln von praktischen und sicherheitsorientierten Umgang mit IT-Systemen",
       "tags": ["Informatik", "Sicherheit", "Betriebssysteme"]
     },
-"id_courseFW": {
+    "id_courseFW": {
       "name": "Finanzwirtschaft",
       "creditPoints": 5,
       "university": "id_uniKA",
@@ -122,7 +122,7 @@
       "description": "Überblick über das Gebiet der Finanzierung",
       "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
     },
-  "id_courseMark": {
+    "id_courseMark": {
       "name": "Marketing",
       "creditPoints": 5,
       "university": "id_uniKA",
@@ -131,7 +131,7 @@
       "description": "Überblick über wesentliche Gebiete des Marketings",
       "tags": ["Marketing", "Wirtschaft", "Unternehmenspolitik"]
     },
- "id_courseProdorg": {
+    "id_courseProdorg": {
       "name": "Produktionsorganisation",
       "creditPoints": 5,
       "university": "id_uniKA",
@@ -140,7 +140,7 @@
       "description": "Überblick über wesentliche betrieblichen und überbetrieblichen Koordinationsprozesse",
       "tags": ["Produktion", "Wirtschaft", "Organisation"]
     },
-"id_courseOpMa": {
+    "id_courseOpMa": {
       "name": "Operations Management 2",
       "creditPoints": 5,
       "university": "id_uniLaHe",
@@ -167,7 +167,7 @@
       "description": "Extends the field of corporate finance to include financial planning and analysis",
       "tags": ["Finanzen", "Wirtschaft", "Kapitalstruktur"]
     },
- "id_courseEt": {
+    "id_courseEt": {
       "name": "Grundlagen der Ethik",
       "creditPoints": 5,
       "university": "id_uniPHKa",
@@ -176,7 +176,7 @@
       "description": "Sie können den philosophischen Charakter der Frage nach Moral erläutern, auch in Differenzierung zu vorrangig nichtphilosophischen Auseinandersetzungen;",
       "tags": ["Lehramt", "Ethik", "Philosophie"]
     },
- "id_courseTheo": {
+    "id_courseTheo": {
       "name": "Theologisches Basiswissen",
       "creditPoints": 5,
       "university": "id_uniPHKa",
@@ -185,7 +185,7 @@
       "description": "Sie können verschiedene Erkenntnis- und Arbeitsmethoden der biblischen, historischen, systematischen und praktischen Theologie in ihren spezifischen Möglichkeiten einschätzen und anwenden;",
       "tags": ["Lehramt", "Theologie", "Glaube"]
     },
- "id_courseModell": {
+    "id_courseModell": {
       "name": "Modelling Techniques for Information Systems",
       "creditPoints": 12,
       "university": "id_uniQueens",

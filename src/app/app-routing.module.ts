@@ -5,12 +5,14 @@ import {CourseListViewComponent} from './student/edit-agreement-view/course-list
 import {HomeViewComponent} from './home-view/home-view.component';
 import {EditAgreementViewComponent} from './student/edit-agreement-view/edit-agreement-view.component';
 import {LoginViewComponent} from './login-view/login-view.component';
+import {MailApprovedTemplateComponent} from './mail-approved-template/mail-approved-template.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeViewComponent},
   { path: 'cl', component: CourseListViewComponent},
   { path: 'eA', component: EditAgreementViewComponent},
-  { path: '', component: LoginViewComponent}
+  { path: '', component: LoginViewComponent},
+  { path: 'mailApproved', component: MailApprovedTemplateComponent}
 ];
 
 @NgModule({

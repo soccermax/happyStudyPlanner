@@ -36,6 +36,8 @@ export class EditAgreementViewComponent implements OnInit {
   choosenCourses: any[] = [];
   choosenHomeCoures: any[] = [];
 
+  progressWidth = [85, 65, 40, 95];
+
   constructor(public courseService: CourseService,
               public userService: UserService,
               public universityService: UniversityService,

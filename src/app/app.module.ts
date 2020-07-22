@@ -12,6 +12,7 @@ import { CourseListViewComponent } from './student/edit-agreement-view/course-li
 import { HomeViewComponent } from './home-view/home-view.component';
 import { LoginViewComponent } from './login-view/login-view.component';
 import {FormsModule} from '@angular/forms';
+import { MailApprovedTemplateComponent } from './mail-approved-template/mail-approved-template.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {FormsModule} from '@angular/forms';
     CourseListViewComponent,
     HomeViewComponent,
     LoginViewComponent,
+    MailApprovedTemplateComponent,
   ],
     imports: [
         BrowserModule,

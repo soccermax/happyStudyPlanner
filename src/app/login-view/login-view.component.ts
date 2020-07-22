@@ -30,7 +30,7 @@ export class LoginViewComponent implements OnInit {
     this.auth.signInWithEmailAndPassword(this.mail, this.password).then(() => {
       this.router.navigateByUrl('home');
     }, error => {
-      console.log(error.message);
+      alert(error.message);
     });
   }
 }

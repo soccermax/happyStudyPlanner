@@ -28,7 +28,7 @@ const importData = async () => {
         if (currentDocument.lastModifiedOn) {
           if (currentDocument.lastModifiedOn === "NEVER") {
             currentDocument.lastModifiedOn = null;
-          } else if(currentDocument.lastModifiedOn === "TODAY") {
+          } else if (currentDocument.lastModifiedOn === "TODAY") {
             currentDocument.lastModifiedOn = admin.firestore.Timestamp.fromDate(new Date());
           }
         }

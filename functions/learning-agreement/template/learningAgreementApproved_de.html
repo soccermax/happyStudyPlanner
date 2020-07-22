@@ -1,18 +1,13 @@
-<!DOCTYPE html>
+
 <html>
-  <head>
-    <mate charest="utf-8" />
-    <title>Learning Agreement genehmigt</title>
-  </head>
-  <body>
-    <h1>Learning Agreement genehmigt</h1>
-    <p>Name: {{student.preName}}</p>
-    <ul>
-      {{#each courses}}
-      <li>Kurs Heimuniversität: {{this.courseHomeUniversity.name}}</li>
-      <li>Kurs Zieluniversität: {{this.courseTargetUniversity.name}}</li>
-      <br />
-      {{/each}}
-    </ul>
-  </body>
+<p>Dear colleague,</p>
+
+<table>
+  <tr><th>Task</th><th>ID</th><th>Duration</th><th>Planned End Date</th><th>Planned End Time</th><th>Responsible</th><th>Processor</th><th>Link</th></tr>
+  <!--{{REPEATED_LIST_OF_COURSES}}--><tr><td>{{TSK_NAME}}</td><td>{{TSK_ID}}</td><td>{{PLAN_DURATION}}</td><td>{{SCH_END_DT}}</td><td>{{SCH_END_TM}}</td><td>{{RESP_VAL}}</td><td>{{PRO_VAL}}</td><td><a href="{{TSK_URL}}">Link</a> </td></tr><!--{{REPEATED_LIST_OF_COURSES}}-->
+</table>
+<p></p>
+<p>Kind regards,</p>
+<p>HS Karlsruhe</p>
 </html>
+
