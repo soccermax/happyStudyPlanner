@@ -32,7 +32,9 @@ const getLearningAgreementById = async (id, deep = false) => {
       getCourseById(course.courseTargetUniversity),
     ]);
     course.courseHomeUniversity = courseHomeUniversity;
+    course.courseHomeUniversity.moduleLink = `https://europe-west3-happystudyplanner.cloudfunctions.net/api/module/${courseHomeUniversity.file}/file`;
     course.courseTargetUniversity = courseTargetUniversity;
+    course.courseTargetUniversity.moduleLink = `https://europe-west3-happystudyplanner.cloudfunctions.net/api/module/${courseTargetUniversity.file}/file`;
   }
   const [targetUniversity, responsible, student] = await Promise.all([
     getUniversityById(learningAgreement.targetUniversity),

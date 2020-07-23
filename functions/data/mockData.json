@@ -21,12 +21,22 @@
       "gender": "male"
     },
     "id_userKira": {
-      "email": "kira.dorner@web.de",
+      "email": "kira.dorner@online.de",
       "name": "Dorner",
       "preName": "Kira",
       "role": "Student",
       "studentId": "234234",
-      "university": "249d7a60-a8fe-4e21-af85-20c5e130e9e9",
+      "university": "id_uniKA",
+      "major": "Wirtschaftsinformatik",
+      "gender": "female"
+    },
+    "id_userLeonie": {
+      "email": "leonie.mueller96@gmx.de",
+      "name": "Müller",
+      "preName": "Leonie",
+      "role": "Student",
+      "studentId": "566543",
+      "university": "id_uniKA",
       "major": "Wirtschaftsinformatik",
       "gender": "female"
     }
@@ -224,7 +234,7 @@
       "file": "2318eaee-9dda-48f5-8fdd-ac3afb270dc0.pdf"
     },
     "id_courseFinan": {
-      "name": "Financial Derivaatives",
+      "name": "Financial Derivatives",
       "creditPoints": 12,
       "university": "id_uniQueens",
       "major": "Wirtschaft",
