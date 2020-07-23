@@ -8,6 +8,7 @@ const {
   setLearningAgreementStatus,
 } = require("../util/retrieve");
 const { generatePDFSteam } = require("../learning-agreement");
+const { getFileStream } = require("../util/attachments");
 
 const api = express();
 
@@ -30,6 +31,14 @@ api.get("/userData/:userId", async (req, res) => {
     return res.status(400).send("The provided id is not a valid user ID");
   }
   return res.send(await getAllLearningAgreementsForUserDeep(userId));
+});
+
+api.get("/module/:moduleId/file", async (req, res) => {
+  const { moduleId } = req.params;
+  if (!moduleId || moduleId.length === 0) {
+    return res.status(400).send("The provided id is not a valid user ID");
+  }
+  return getFileStream(moduleId).pipe(res);
 });
 
 api.get("/learningAgreement/:learningAgreementId", async (req, res) => {
