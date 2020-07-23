@@ -21,7 +21,12 @@ const onUpdateHandler = functions
   .firestore.document("learningAgreement/{learningAgreementId}")
   .onUpdate(async (snapshot) => {
     const afterUpdate = snapshot.after.data();
-    if (Object.prototype.hasOwnProperty.call(afterUpdate, "approved") && afterUpdate.approved === "true") {
+    const beforeUpdate = snapshot.before.data();
+    if (
+      Object.prototype.hasOwnProperty.call(afterUpdate, "approved") &&
+      afterUpdate.approved === "true" &&
+      beforeUpdate.approved !== afterUpdate.approved
+    ) {
       return getImportRunningState()
         ? Promise.resolve()
         : _sendLearningAgreementApprovedEmail(
@@ -31,6 +36,7 @@ const onUpdateHandler = functions
     } else if (
       Object.prototype.hasOwnProperty.call(afterUpdate, "approved") &&
       afterUpdate.approved === "false" &&
+      beforeUpdate.approved !== afterUpdate.approved &&
       Object.prototype.hasOwnProperty.call(afterUpdate, "lastEvaluatedOn") &&
       afterUpdate.lastEvaluatedOn !== null
     ) {
